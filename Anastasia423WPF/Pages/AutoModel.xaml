@@ -9,20 +9,30 @@
       Title="AutoModel">
 
     <Grid Background="#FFF7DBF7">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ComboBox HorizontalAlignment="Center" 
-      Margin="0,57,0,0" 
+
+        <ComboBox x:Name="CarChoose"  HorizontalAlignment="Left" 
+      Margin="216,112,0,0" 
       VerticalAlignment="Top"
       Width="120" 
       SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FFA95757" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
         </ComboBox>
-        <ComboBox  HorizontalAlignment="Center" Margin="0,57,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="166,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Двигатель"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="517,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="2"><Run Language="ru-ru" Text="Автомобиль"/></TextBlock>
-        <TextBlock HorizontalAlignment="Center" Margin="0,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Автомобиль"/></TextBlock>
+        <ComboBox x:Name="EngineChoose" HorizontalAlignment="Left" Margin="425,112,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FFB96767" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="457,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.754,0.128"><Run Language="ru-ru" Text="Двигатель"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="242,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.42,1.017"><Run Language="ru-ru" Text="Автомобиль"/></TextBlock>
+        <Button Content="Рассчитать стоимость" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" Height="40" Width="166" Background="#FFABC0CA"/>
+        <TextBlock x:Name="PriceText" HorizontalAlignment="Center" Margin="0,294,0,0" TextWrapping="Wrap" Text="Итоговая стоимость" VerticalAlignment="Top" FontSize="18"/>
     </Grid>
 </Page>

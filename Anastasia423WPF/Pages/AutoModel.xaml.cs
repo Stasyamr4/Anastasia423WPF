@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,10 +21,30 @@ namespace Anastasia423WPF.Pages
     /// </summary>
     public partial class AutoModel : Page
     {
-        public AutoModel()
-        {
-            InitializeComponent();
-            List<Car> cars = new List<Car>()
+
+        List<Engine> engine = new List<Engine>()
+            {
+                new Engine
+                {
+                    Name = "1.6L Бензиновый",
+                    Price = 150000,
+                    HP = 120
+                },
+                new Engine
+                {
+                   Name = "2.0L Турбодизель",
+                   Price = 250000,
+                   HP = 180
+                },
+                new Engine
+                {
+                    Name = "3.0L Бензиновый турбо",
+                    Price = 350000,
+                    HP = 300
+                }
+            };
+
+        List<Car> cars = new List<Car>()
             {
                 new Car
                 {
@@ -44,12 +65,39 @@ namespace Anastasia423WPF.Pages
                     Color = "Черный"
                 }
             };
-           
+        public AutoModel()
+        {
+            InitializeComponent();
+
+            CarChoose.ItemsSource = cars;
+            CarChoose.SelectedIndex = 0;
+            CarChoose.DisplayMemberPath = "Name";
+
+
+            EngineChoose.ItemsSource = engine;
+            EngineChoose.SelectedIndex = 0;
+            EngineChoose.DisplayMemberPath = "Name";
         }
+
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PriceText.Text = "Итоговая стоимость: ";
+            if (EngineChoose.SelectedIndex == 0)
+            {
+                PriceText.Text += cars[CarChoose.SelectedIndex].Price.ToString();
+            }
+            else
+            {
+                decimal PriceFinal = cars[CarChoose.SelectedIndex].Price + engine[EngineChoose.SelectedIndex].Price;
+                PriceText.Text += PriceFinal.ToString();
+            }
         }
     }
 }
