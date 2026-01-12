@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -85,14 +86,6 @@ namespace Anastasia423WPF.Pages
 
         }
 
-
-        
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void PriceCalculate_Click(object sender, RoutedEventArgs e)
         {
             PriceText.Text = "Итоговая стоимость: ";
@@ -106,5 +99,10 @@ namespace Anastasia423WPF.Pages
                 PriceText.Text += PriceFinal.ToString();
             }
         }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Option());
+        }
+
     }
 }
