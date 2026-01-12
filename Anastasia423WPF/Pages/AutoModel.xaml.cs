@@ -86,7 +86,14 @@ namespace Anastasia423WPF.Pages
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PriceCalculate_Click(object sender, RoutedEventArgs e)
         {
             PriceText.Text = "Итоговая стоимость: ";
             if (EngineChoose.SelectedIndex == 0)
