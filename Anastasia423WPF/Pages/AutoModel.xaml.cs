@@ -51,21 +51,22 @@ namespace Anastasia423WPF.Pages
                 {
                     Name = "Toyota",
                     Price = 2000000,
-                    Color = "Красный"
+                    color = "Белый"
                 },
                 new Car
                 {
                     Name = "BMW X5",
                     Price = 3500000,
-                    Color = "Белый"
+                    color = "Красный"
                 },
                 new Car
                 {
                     Name = "Mercedes-Benz",
                     Price = 4000000,
-                    Color = "Черный"
+                    color = "Лимонный"
                 }
             };
+        
         public AutoModel()
         {
             InitializeComponent();
@@ -85,7 +86,7 @@ namespace Anastasia423WPF.Pages
         {
 
         }
-
+        private decimal PriceFinal;
         private void PriceCalculate_Click(object sender, RoutedEventArgs e)
         {
             PriceText.Text = "Итоговая стоимость: ";
@@ -101,7 +102,14 @@ namespace Anastasia423WPF.Pages
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            var car = NavigationData.CurrentData as Car;
+            car.Name = CarChoose.SelectedItem.ToString();
+            car.engine = (Engine)EngineChoose.SelectedItem;
+            car.Price = PriceFinal;
+            NavigationData.CurrentData = car;
             NavigationService.Navigate(new Option());
+
+
         }
 
     }

@@ -10,6 +10,8 @@ namespace Anastasia423WPF
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public string Color { get; set; }
+        public string color  { get; set; }
+        public Engine engine { get; set; }
     }
+
 }
