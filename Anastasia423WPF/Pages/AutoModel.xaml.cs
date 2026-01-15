@@ -102,12 +102,13 @@ namespace Anastasia423WPF.Pages
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var car = NavigationData.CurrentData as Car;
-            car.Name = CarChoose.SelectedItem.ToString();
+            //var car = NavigationData.CurrentData as Car;
+            Car car = new Car();
+            car.Name = (CarChoose.SelectedItem as Car).Name;
             car.engine = (Engine)EngineChoose.SelectedItem;
             car.Price = PriceFinal;
             NavigationData.CurrentData = car;
-            NavigationService.Navigate(new Option());
+            NavigationService.Navigate(new Option(car));
 
 
         }

@@ -8,5 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Option">
 
-    <Grid OpacityMask="#FFE6DEDE" Background="#FFA1D29D"/>
+    <Grid OpacityMask="#FFE6DEDE" Background="#FFA1D29D">
+        <StackPanel>
+            <TextBlock x:Name="TopPrice" Margin="50" HorizontalAlignment="Center" Text="Итоговая стоимость машины: "></TextBlock>
+        </StackPanel>
+    </Grid>
 </Page>

@@ -20,11 +20,16 @@ namespace Anastasia423WPF.Pages
     /// </summary>
     public partial class Option : Page
     {
-        public Option()
+        decimal price1;
+        public Option(Car car)
         {
             InitializeComponent();
+            
+            price1 = car.Price;
+            TopPrice.Text += price1.ToString();
         }
 
         
     }
+
 }

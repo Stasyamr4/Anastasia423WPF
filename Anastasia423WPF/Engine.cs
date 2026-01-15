@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Anastasia423WPF
 {
-    internal class Engine
+    public class Engine
     {
         public string Name { get; set; }
         public decimal Price { get; set; }

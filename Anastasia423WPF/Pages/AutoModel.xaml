@@ -9,31 +9,29 @@
       Title="AutoModel">
 
     <Grid Background="#FFF7DBF7">
-
-        <ComboBox x:Name="CarChoose"  HorizontalAlignment="Left" 
-      Margin="221,123,0,0" 
-      VerticalAlignment="Top"
-      Width="141" 
-      SelectionChanged="ComboBox_SelectionChanged" Height="42">
-            <ComboBox.Background>
-                <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Color="#FFF0F0F0"/>
-                    <GradientStop Color="#FFA95757" Offset="1"/>
-                </LinearGradientBrush>
-            </ComboBox.Background>
-        </ComboBox>
-        <ComboBox x:Name="EngineChoose" HorizontalAlignment="Left" Margin="427,123,0,0" VerticalAlignment="Top" Width="138" Height="42">
-            <ComboBox.Background>
-                <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Color="#FFF0F0F0"/>
-                    <GradientStop Color="#FFB96767" Offset="1"/>
-                </LinearGradientBrush>
-            </ComboBox.Background>
-        </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="459,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.754,0.128" FontSize="16"><Run Language="ru-ru" Text="Двигатель"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="246,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.42,1.017" Height="37" FontSize="16"><Run Language="ru-ru" Text="Автомобиль"/></TextBlock>
-        <Button x:Name="PriceCalculate" Content="Рассчитать стоимость" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="166" Background="#FFABC0CA" FontSize="14" Click="PriceCalculate_Click"/>
-        <TextBlock x:Name="PriceText" HorizontalAlignment="Left" Margin="319,273,0,0" TextWrapping="Wrap" Text="Итоговая стоимость" VerticalAlignment="Top" FontSize="18"/>
-        <Button Content="Далее" HorizontalAlignment="Left" Margin="623,391,0,0" VerticalAlignment="Top" Height="39" Width="128" FontSize="18" Background="#FFCCE4BF" Click="Button_Click_1"/>
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" Margin="15" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.42,1.017" Height="37" FontSize="16"><Run Language="ru-ru" Text="Автомобиль"/></TextBlock>
+            <ComboBox x:Name="CarChoose"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="141"  SelectionChanged="ComboBox_SelectionChanged" Height="42">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFA95757" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+            <TextBlock HorizontalAlignment="Center" Margin="15"  TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.754,0.128" FontSize="16"><Run Language="ru-ru" Text="Двигатель"/></TextBlock>
+            <ComboBox x:Name="EngineChoose" Margin="15" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="138" Height="42">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFB96767" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+            <Button x:Name="PriceCalculate" Margin="15" Content="Рассчитать стоимость" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="166" Background="#FFABC0CA" FontSize="14" Click="PriceCalculate_Click"/>
+            <TextBlock x:Name="PriceText" Margin="15" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Итоговая стоимость" VerticalAlignment="Top" FontSize="18"/>
+            <Button Content="Далее" Margin="15" HorizontalAlignment="Center" VerticalAlignment="Top" Height="39" Width="128" FontSize="18" Background="#FFCCE4BF" Click="Button_Click_1"/>
+        </StackPanel>
+       
     </Grid>
 </Page>
