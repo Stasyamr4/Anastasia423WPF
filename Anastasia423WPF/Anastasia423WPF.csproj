@@ -83,6 +83,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Options.cs" />
     <Compile Include="Pages\AutoModel.xaml.cs">
       <DependentUpon>AutoModel.xaml</DependentUpon>
     </Compile>

@@ -21,6 +21,24 @@ namespace Anastasia423WPF.Pages
     /// </summary>
     public partial class Option : Page
     {
+        List<Options> options = new List<Options>()
+        {
+            new Options
+            {
+                Name = "Кондиционер",
+                Price = 1500
+            },
+            new Options
+            {
+                Name = "Лампочка", 
+                Price = 1700
+            },
+             new Options
+            {
+                Name = "Люк",
+                Price = 1000
+            }
+        };
         decimal price1;
         public Option(Car car)
         {
@@ -35,6 +53,41 @@ namespace Anastasia423WPF.Pages
             TopPrice.Text = $"итоговая стоимость машины: {price1.ToString()}";
             
         }
+
+        private void Kondi_Checked(object sender, RoutedEventArgs e)
+        {
+            price1 += options[0].Price;
+            Calculate() ;
+        }
+
+        private void Kondi_Unchecked(object sender, RoutedEventArgs e)
+        {
+            price1 -= options[0].Price;
+            Calculate();
+        }
+
+        private void Lampa_Checked(object sender, RoutedEventArgs e)
+        {
+            price1 += options[1].Price;
+            Calculate() ;
+        }
+        private void Lampa_Unchecked(object sender, RoutedEventArgs e)
+        {
+            price1 -= options[1].Price;
+            Calculate();
+        }
+
+        private void luk_Checked(object sender, RoutedEventArgs e)
+        {
+            price1 += options[1].Price;
+            Calculate();
+        }
+        private void luk_Unchecked(object sender, RoutedEventArgs e)
+        {
+            price1 -= options[1].Price;
+            Calculate();
+        }
+
     }
 
 }
