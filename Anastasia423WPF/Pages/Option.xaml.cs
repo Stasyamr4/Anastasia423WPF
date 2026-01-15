@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,12 +25,16 @@ namespace Anastasia423WPF.Pages
         public Option(Car car)
         {
             InitializeComponent();
-            
             price1 = car.Price;
-            TopPrice.Text += price1.ToString();
+            Calculate();
+
         }
 
-        
+        public void Calculate()
+        {
+            TopPrice.Text = $"итоговая стоимость машины: {price1.ToString()}";
+            
+        }
     }
 
 }

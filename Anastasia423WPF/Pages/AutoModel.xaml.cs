@@ -51,19 +51,19 @@ namespace Anastasia423WPF.Pages
                 {
                     Name = "Toyota",
                     Price = 2000000,
-                    color = "Белый"
+                    
                 },
                 new Car
                 {
                     Name = "BMW X5",
                     Price = 3500000,
-                    color = "Красный"
+                    
                 },
                 new Car
                 {
                     Name = "Mercedes-Benz",
                     Price = 4000000,
-                    color = "Лимонный"
+                    
                 }
             };
         
@@ -86,17 +86,18 @@ namespace Anastasia423WPF.Pages
         {
 
         }
-        private decimal PriceFinal;
+        public decimal PriceFinal;
         private void PriceCalculate_Click(object sender, RoutedEventArgs e)
         {
             PriceText.Text = "Итоговая стоимость: ";
             if (EngineChoose.SelectedIndex == 0)
             {
                 PriceText.Text += cars[CarChoose.SelectedIndex].Price.ToString();
+                PriceFinal = cars[CarChoose.SelectedIndex].Price;
             }
             else
             {
-                decimal PriceFinal = cars[CarChoose.SelectedIndex].Price + engine[EngineChoose.SelectedIndex].Price;
+                PriceFinal = cars[CarChoose.SelectedIndex].Price + engine[EngineChoose.SelectedIndex].Price;
                 PriceText.Text += PriceFinal.ToString();
             }
         }
