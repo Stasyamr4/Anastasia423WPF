@@ -9,10 +9,11 @@
       Title="Option">
 
     <Grid OpacityMask="#FFE6DEDE" Background="#FFA1D29D">
-        <CheckBox x:Name="Kondi" Margin="48,78,0,337" HorizontalAlignment="Left" Content="Кондиционер" FontSize="16" Checked="Kondi_Checked" Unchecked="Kondi_Unchecked"></CheckBox>
-        <TextBlock x:Name="TopPrice" Margin="0,353,0,66" HorizontalAlignment="Center" Text="Итоговая стоимость машины: " FontSize="16"></TextBlock>
-        <CheckBox x:Name="Lampa" Margin="48,133,0,282" HorizontalAlignment="Left" Content="Лампочка" FontSize="16" Checked="Lampa_Checked" Unchecked="Lampa_Unchecked"/>
-        <CheckBox x:Name="luk" Margin="48,190,0,225" HorizontalAlignment="Left" Content="Люк" FontSize="16" Checked="luk_Checked" Unchecked="luk_Unchecked"/>
+        <CheckBox x:Name="Kondi" Margin="169,116,0,300" HorizontalAlignment="Left" Content="Кондиционер" FontSize="16" Checked="Kondi_Checked" Unchecked="Kondi_Unchecked"></CheckBox>
+        <TextBlock x:Name="TopPrice" Margin="258,315,0,104" HorizontalAlignment="Left" Text="Итоговая стоимость машины: " FontSize="16"></TextBlock>
+        <CheckBox x:Name="Lampa" Margin="169,172,0,242" HorizontalAlignment="Left" Content="Лампочка" FontSize="16" Checked="Lampa_Checked" Unchecked="Lampa_Unchecked"/>
+        <CheckBox x:Name="luk" Margin="169,225,0,190" HorizontalAlignment="Left" Content="Люк" FontSize="16" Checked="luk_Checked" Unchecked="luk_Unchecked"/>
+        <ComboBox x:Name="CarColor" HorizontalAlignment="Left" Margin="420,117,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
 
     </Grid>
 </Page>

@@ -87,6 +87,7 @@
     <Compile Include="Pages\AutoModel.xaml.cs">
       <DependentUpon>AutoModel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Color.cs" />
     <Compile Include="Pages\Option.xaml.cs">
       <DependentUpon>Option.xaml</DependentUpon>
     </Compile>

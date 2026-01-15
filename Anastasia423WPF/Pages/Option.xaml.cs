@@ -39,12 +39,33 @@ namespace Anastasia423WPF.Pages
                 Price = 1000
             }
         };
+        List<Colors> colors = new List<Colors>()
+        {
+            new Colors
+            {
+                Name = "Белый",
+                Price = 500
+            },
+            new Colors
+            {
+                Name = "Черный",
+                Price = 600
+            },
+             new Colors
+            {
+                Name = "Бежевый",
+                Price = 700
+            },
+        };
         decimal price1;
         public Option(Car car)
         {
             InitializeComponent();
             price1 = car.Price;
             Calculate();
+            CarColor.ItemsSource = colors;
+            CarColor.SelectedIndex = 0;
+            CarColor.DisplayMemberPath = "Name";
 
         }
 
@@ -88,6 +109,10 @@ namespace Anastasia423WPF.Pages
             Calculate();
         }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
 }
