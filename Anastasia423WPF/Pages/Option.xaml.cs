@@ -19,8 +19,13 @@ namespace Anastasia423WPF.Pages
     /// <summary>
     /// Логика взаимодействия для Option.xaml
     /// </summary>
+    
     public partial class Option : Page
     {
+        List<Options> chek = new List<Options>()
+        {
+
+        };
         List<Options> options = new List<Options>()
         {
             new Options
@@ -77,40 +82,44 @@ namespace Anastasia423WPF.Pages
 
         private void Kondi_Checked(object sender, RoutedEventArgs e)
         {
-            price1 += options[0].Price;
-            Calculate() ;
+            var choosen = options.FirstOrDefault(o => o.Name == (sender as CheckBox).Content);
+            if (choosen != null) 
+                chek.Add(choosen);
         }
 
         private void Kondi_Unchecked(object sender, RoutedEventArgs e)
         {
-            price1 -= options[0].Price;
-            Calculate();
+            var choosen = options.FirstOrDefault(o => o.Name == (sender as CheckBox).Content);
+            if (choosen != null)
+                chek.Remove(choosen);
         }
 
-        private void Lampa_Checked(object sender, RoutedEventArgs e)
-        {
-            price1 += options[1].Price;
-            Calculate() ;
-        }
-        private void Lampa_Unchecked(object sender, RoutedEventArgs e)
-        {
-            price1 -= options[1].Price;
-            Calculate();
-        }
+        //private void Lampa_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    var choosen = options.FirstOrDefault(o => o.Name == (sender as Options).Name);
+        //    if (choosen != null)
+        //        chek.Remove(choosen);
+        //}
+        //private void Lampa_Unchecked(object sender, RoutedEventArgs e)
+        //{
+        //    price1 -= options[1].Price;
+        //    Calculate();
+        //}
 
-        private void luk_Checked(object sender, RoutedEventArgs e)
-        {
-            price1 += options[1].Price;
-            Calculate();
-        }
-        private void luk_Unchecked(object sender, RoutedEventArgs e)
-        {
-            price1 -= options[1].Price;
-            Calculate();
-        }
+        //private void luk_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    price1 += options[2].Price;
+        //    Calculate();
+        //}
+        //private void luk_Unchecked(object sender, RoutedEventArgs e)
+        //{
+        //    price1 -= options[2].Price;
+        //    Calculate();
+        //}
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+              
 
         }
     }
