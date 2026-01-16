@@ -61,11 +61,13 @@ namespace Anastasia423WPF.Pages
         };
         decimal price1;
         Colors selectedColor;
+        Car Mycar;
         public Option(Car car)
         {
             InitializeComponent();
             price1 = car.Price;
             selectedColor = colors[0];
+            Mycar = car;
             Calculate();
             CarColor.ItemsSource = colors;
             CarColor.SelectedIndex = 0;
@@ -95,7 +97,7 @@ namespace Anastasia423WPF.Pages
 
         private void Kondi_Checked(object sender, RoutedEventArgs e)
         {
-            var choosen = options.FirstOrDefault(o => o.Name == (sender as CheckBox).Content);
+            var choosen = options.FirstOrDefault(o => o.Name == (sender as CheckBox).Content.ToString());
             if (choosen != null) 
                 chek.Add(choosen);
             Calculate();
@@ -103,40 +105,23 @@ namespace Anastasia423WPF.Pages
 
         private void Kondi_Unchecked(object sender, RoutedEventArgs e)
         {
-            var choosen = options.FirstOrDefault(o => o.Name == (sender as CheckBox).Content);
+            var choosen = options.FirstOrDefault(o => o.Name == (sender as CheckBox).Content.ToString());
             if (choosen != null)
                 chek.Remove(choosen);
             Calculate();
         }
 
-        //private void Lampa_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    var choosen = options.FirstOrDefault(o => o.Name == (sender as Options).Name);
-        //    if (choosen != null)
-        //        chek.Remove(choosen);
-        //}
-        //private void Lampa_Unchecked(object sender, RoutedEventArgs e)
-        //{
-        //    price1 -= options[1].Price;
-        //    Calculate();
-        //}
-
-        //private void luk_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    price1 += options[2].Price;
-        //    Calculate();
-        //}
-        //private void luk_Unchecked(object sender, RoutedEventArgs e)
-        //{
-        //    price1 -= options[2].Price;
-        //    Calculate();
-        //}
-
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
             selectedColor = CarColor.SelectedItem as Colors;
-            Calculate(); // Добавил пересчет
+            Calculate();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationData.CurrentData = Mycar;
+            //NavigationService.Navigate(new ShowDetails(Mycar));
         }
     }
 

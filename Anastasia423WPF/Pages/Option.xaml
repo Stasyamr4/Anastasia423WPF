@@ -14,6 +14,7 @@
         <CheckBox x:Name="Lampa" Margin="169,172,0,242" HorizontalAlignment="Left" Content="Лампочка" FontSize="16" Checked="Kondi_Checked" Unchecked="Kondi_Unchecked"/>
         <CheckBox x:Name="luk" Margin="169,225,0,190" HorizontalAlignment="Left" Content="Люк" FontSize="16" Checked="Kondi_Checked" Unchecked="Kondi_Unchecked"/>
         <ComboBox x:Name="CarColor" HorizontalAlignment="Left" Margin="420,117,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Button Content="Далее" HorizontalAlignment="Left" Margin="653,386,0,0" VerticalAlignment="Top" Background="#FF676569" FontSize="18" Height="30" Width="95" Click="Button_Click"/>
 
     </Grid>
 </Page>
