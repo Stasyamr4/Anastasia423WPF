@@ -22,10 +22,7 @@ namespace Anastasia423WPF.Pages
     
     public partial class Option : Page
     {
-        List<Options> chek = new List<Options>()
-        {
-
-        };
+        List<Options> chek = new List<Options>();
         List<Options> options = new List<Options>()
         {
             new Options
@@ -63,10 +60,12 @@ namespace Anastasia423WPF.Pages
             },
         };
         decimal price1;
+        Colors selectedColor;
         public Option(Car car)
         {
             InitializeComponent();
             price1 = car.Price;
+            selectedColor = colors[0];
             Calculate();
             CarColor.ItemsSource = colors;
             CarColor.SelectedIndex = 0;
@@ -76,7 +75,21 @@ namespace Anastasia423WPF.Pages
 
         public void Calculate()
         {
-            TopPrice.Text = $"итоговая стоимость машины: {price1.ToString()}";
+            decimal total = price1;
+
+            // Добавляем стоимость выбранных опций
+            foreach (var option in chek)
+            {
+                total += option.Price;
+            }
+
+            // Добавляем стоимость выбранного цвета
+            if (selectedColor != null)
+            {
+                total += selectedColor.Price;
+            }
+
+            TopPrice.Text = $"итоговая стоимость машины: {total.ToString()}";
             
         }
 
@@ -85,6 +98,7 @@ namespace Anastasia423WPF.Pages
             var choosen = options.FirstOrDefault(o => o.Name == (sender as CheckBox).Content);
             if (choosen != null) 
                 chek.Add(choosen);
+            Calculate();
         }
 
         private void Kondi_Unchecked(object sender, RoutedEventArgs e)
@@ -92,6 +106,7 @@ namespace Anastasia423WPF.Pages
             var choosen = options.FirstOrDefault(o => o.Name == (sender as CheckBox).Content);
             if (choosen != null)
                 chek.Remove(choosen);
+            Calculate();
         }
 
         //private void Lampa_Checked(object sender, RoutedEventArgs e)
@@ -119,8 +134,9 @@ namespace Anastasia423WPF.Pages
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-              
 
+            selectedColor = CarColor.SelectedItem as Colors;
+            Calculate(); // Добавил пересчет
         }
     }
 
