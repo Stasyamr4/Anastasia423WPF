@@ -92,7 +92,7 @@ namespace Anastasia423WPF.Pages
             }
 
             TopPrice.Text = $"итоговая стоимость машины: {total.ToString()}";
-            
+            price1 = total;
         }
 
         private void Kondi_Checked(object sender, RoutedEventArgs e)
@@ -115,13 +115,15 @@ namespace Anastasia423WPF.Pages
         {
 
             selectedColor = CarColor.SelectedItem as Colors;
+            Mycar.color = selectedColor.Name;
             Calculate();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Mycar.Price = price1;
             NavigationData.CurrentData = Mycar;
-            //NavigationService.Navigate(new ShowDetails(Mycar));
+            NavigationService.Navigate(new ShowDetails(Mycar, chek));
         }
     }
 

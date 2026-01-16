@@ -20,9 +20,27 @@ namespace Anastasia423WPF.Pages
     /// </summary>
     public partial class ShowDetails : Page
     {
-        public ShowDetails()
+        Car car1;
+        List<Options> CheckDop;
+        public ShowDetails(Car mycar, List<Options> chek)
         {
+            car1 = mycar;
+            CheckDop = chek;
             InitializeComponent();
+            ChangeInform();
+        }
+
+        public void ChangeInform()
+        {
+            MyCar.Text += car1.Name;
+            Engine.Text += car1.engine.Name;
+            foreach(var dops in CheckDop)
+            {
+                Dop.Text += $"{dops.Name}, ";
+            }
+            Dop.Text = Dop.Text.Remove(Dop.Text.Length - 1);
+            ColorCar.Text += car1.color;
+            PriceCar.Text += car1.Price;
         }
     }
 }

@@ -14,7 +14,7 @@
             <TextBlock x:Name="Engine" Text="Двигатель: " HorizontalAlignment="Center" Margin="15" FontSize="16"></TextBlock>
             <TextBlock x:Name="Dop" Text="Доп. опции: " HorizontalAlignment="Center" Margin="15" FontSize="16"></TextBlock>
             <TextBlock x:Name="ColorCar" Text="Цвет машины: " HorizontalAlignment="Center" Margin="15" FontSize="16"></TextBlock>
-            
+            <TextBlock x:Name="PriceCar" Text="Конечная стоимость машины: " HorizontalAlignment="Center" Margin="15" FontSize="16"></TextBlock>
         </StackPanel>
     </Grid>
 </Page>
