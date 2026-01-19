@@ -10,9 +10,9 @@
 
     <Grid Background="#FFD66060">
         <StackPanel>
-            <TextBlock x:Name="SliderMan" Text="Процент кредита" HorizontalAlignment="Center" Margin="30" FontSize="18" />
-            <Slider x:Name="PercentCred" Maximum="100" Minimum="1"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25" Width="227" Height="22" Thumb.DragCompleted="PercentCred_DragCompleted"/>
-            <TextBlock x:Name="Slay" Text="Срок кредита" HorizontalAlignment="Center" Margin="10" FontSize="18" />
+            <TextBlock x:Name="SliderMan" Text="Процент первоначального взноса" HorizontalAlignment="Center" Margin="30" FontSize="18" />
+            <Slider x:Name="PercentCred" Maximum="70" Minimum="10"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25" Width="227" Height="22" Thumb.DragCompleted="PercentCred_DragCompleted"/>
+            <TextBlock x:Name="Slay" Text="Срок кредита (в месяцах)" HorizontalAlignment="Center" Margin="10" FontSize="18" />
             <Slider HorizontalAlignment="Center" Maximum="96" Minimum="12" x:Name="SrokCred" Margin ="10" VerticalAlignment="Top" Width="227" Height="22" Thumb.DragCompleted="SrokCred_DragCompleted"/>
             <TextBlock x:Name="PercentText" Text="Процент кредита: " HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center" FontSize="16" Visibility="Hidden"/>
             <TextBlock x:Name="YearText" Text="Срок кредита: " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="20" Visibility="Hidden"></TextBlock>

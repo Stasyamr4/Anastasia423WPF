@@ -34,11 +34,20 @@ namespace Anastasia423WPF.Pages
         {
             MyCar.Text += car1.Name;
             Engine.Text += car1.engine.Name;
-            foreach(var dops in CheckDop)
+            Dop.Text = "Дополнительные опции: ";
+            for (int i = 0; i < CheckDop.Count; i++)
             {
-                Dop.Text += $"{dops.Name}, ";
+                Dop.Text += CheckDop[i].Name;
+                if (i < CheckDop.Count - 1) // Если не последний элемент, добавляем запятую
+                {
+                    Dop.Text += ", ";
+                }
             }
-            Dop.Text = Dop.Text.Remove(Dop.Text.Length - 1);
+
+            if (!CheckDop.Any())
+            {
+                Dop.Text = "Дополнительные опции отсутствуют";
+            }
             ColorCar.Text += car1.color;
             PriceCar.Text += car1.Price;
         }

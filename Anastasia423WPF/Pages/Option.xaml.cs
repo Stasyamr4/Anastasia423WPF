@@ -62,22 +62,29 @@ namespace Anastasia423WPF.Pages
         decimal price1;
         Colors selectedColor;
         Car Mycar;
+        decimal basePrice;
         public Option(Car car)
         {
             InitializeComponent();
-            price1 = car.Price;
-            selectedColor = colors[0];
+
+            chek.Clear();
             Mycar = car;
-            Calculate();
+            basePrice = car.Price;
+
+            
+            selectedColor = colors[0];
+
             CarColor.ItemsSource = colors;
             CarColor.SelectedIndex = 0;
             CarColor.DisplayMemberPath = "Name";
+
+            Calculate();
 
         }
 
         public void Calculate()
         {
-            decimal total = price1;
+            decimal total = Mycar.Price;
 
             // Добавляем стоимость выбранных опций
             foreach (var option in chek)
