@@ -15,6 +15,8 @@
             <TextBlock x:Name="Dop" Text="Доп. опции: " HorizontalAlignment="Center" Margin="15" FontSize="16"></TextBlock>
             <TextBlock x:Name="ColorCar" Text="Цвет машины: " HorizontalAlignment="Center" Margin="15" FontSize="16"></TextBlock>
             <TextBlock x:Name="PriceCar" Text="Конечная стоимость машины: " HorizontalAlignment="Center" Margin="15" FontSize="16"></TextBlock>
+            
         </StackPanel>
+        <Button Content="Далее" Height="35" Width="108" Margin="553,299,139,116" HorizontalContentAlignment="Center" FontSize="18" Click="Button_Click" Background="#FFD66060"/>
     </Grid>
 </Page>

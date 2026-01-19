@@ -42,5 +42,11 @@ namespace Anastasia423WPF.Pages
             ColorCar.Text += car1.color;
             PriceCar.Text += car1.Price;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationData.CurrentData = car1 ;
+            NavigationService.Navigate(new CreditAuto(car1));
+        }
     }
 }

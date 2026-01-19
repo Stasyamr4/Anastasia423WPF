@@ -73,6 +73,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\CreditAuto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Option.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,7 +95,10 @@
     <Compile Include="Pages\AutoModel.xaml.cs">
       <DependentUpon>AutoModel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Color.cs" />
+    <Compile Include="Color.cs" />
+    <Compile Include="Pages\CreditAuto.xaml.cs">
+      <DependentUpon>CreditAuto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Option.xaml.cs">
       <DependentUpon>Option.xaml</DependentUpon>
     </Compile>
