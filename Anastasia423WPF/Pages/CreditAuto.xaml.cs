@@ -83,5 +83,10 @@ namespace Anastasia423WPF.Pages
                 MonthPay.Text = $"Ваш ежемесячный платеж составляет {Math.Round(A).ToString()}";
             }
         }
+
+        private void NextBut_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Application());
+        }
     }
 }

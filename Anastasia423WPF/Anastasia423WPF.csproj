@@ -69,6 +69,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Application.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AutoModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Options.cs" />
+    <Compile Include="Pages\Application.xaml.cs">
+      <DependentUpon>Application.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AutoModel.xaml.cs">
       <DependentUpon>AutoModel.xaml</DependentUpon>
     </Compile>

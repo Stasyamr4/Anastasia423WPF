@@ -15,8 +15,9 @@
             <TextBlock x:Name="Slay" Text="Срок кредита (в месяцах)" HorizontalAlignment="Center" Margin="10" FontSize="18" />
             <Slider HorizontalAlignment="Center" Maximum="96" Minimum="12" x:Name="SrokCred" Margin ="10" VerticalAlignment="Top" Width="227" Height="22" Thumb.DragCompleted="SrokCred_DragCompleted"/>
             <TextBlock x:Name="PercentText" Text="Процент кредита: " HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center" FontSize="16" Visibility="Hidden"/>
-            <TextBlock x:Name="YearText" Text="Срок кредита: " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="20" Visibility="Hidden"></TextBlock>
+            <TextBlock x:Name="YearText" Text="Срок кредита: " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="15" Visibility="Hidden"></TextBlock>
             <TextBlock x:Name="MonthPay" Text="Ваш ежемесячный платеж составляет" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="20"></TextBlock>
+            <Button x:Name="NextBut" Content="Далее" FontSize="16" Height="38" Width="122" Click="NextBut_Click"/>
         </StackPanel>
     </Grid>
 </Page>
