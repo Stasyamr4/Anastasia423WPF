@@ -20,27 +20,59 @@ namespace Anastasia423WPF.NewFolder1
     /// </summary>
     public partial class Products : Page
     {
+        public List<Product> products = Core.Context.Product.ToList();
         public Products()
         {
             InitializeComponent();
-            AddText();
+            
+            listBox.ItemsSource = products;
+            DataContext = this;
+            foreach (var product in products)
+            {
+                if (!string.IsNullOrEmpty(product.ImagePath))
+                {
+                    // Если путь относительный, преобразуем его
+                    product.ImagePath = GetImagePath(product.ImagePath);
+                }
+            }
         }
 
 
-        public void AddText()
+        private string GetImagePath(string dbPath)
         {
-            var prod = new Product();
-            prod = Core.Context.Product.Where(p => p.name == "шарф").FirstOrDefault();
-            Sharf.Text = $"{prod.name}\n {prod.price}";
+            // Просто возвращаем путь как есть - WPF сам найдет
+            // если картинки в папке с exe-файлом
+            return dbPath;
 
-            prod = Core.Context.Product.Where(p => p.name == "палочка").FirstOrDefault();
-            Palochka.Text = $"{prod.name}\n {prod.price}";
-
-            prod = Core.Context.Product.Where(p => p.name == "мантия").FirstOrDefault();
-            MantiaNevidimka.Text = $"{prod.name}\n {prod.price}";
-
-            prod = Core.Context.Product.Where(p => p.name == "учебник").FirstOrDefault();
-            Book.Text = $"{prod.name}\n {prod.price}";
+            // ИЛИ если нужно проверить существование файла:
+            /*
+            string fullPath = Path.Combine(Directory.GetCurrentDirectory(), dbPath);
+            if (File.Exists(fullPath))
+            {
+                return dbPath; // относительный путь
+            }
+            else
+            {
+                return "Images/no_image.png"; // путь к заглушке
+            }
+            */
         }
+
+
+        //public void AddText()
+        //{
+        //    var prod = new Product();
+        //    prod = Core.Context.Product.Where(p => p.Name == "шарф").FirstOrDefault();
+        //    Sharf.Text = $"{prod.Name}\n {prod.price}";
+
+        //    prod = Core.Context.Product.Where(p => p.name == "палочка").FirstOrDefault();
+        //    Palochka.Text = $"{prod.name}\n {prod.price}";
+
+        //    prod = Core.Context.Product.Where(p => p.name == "мантия").FirstOrDefault();
+        //    MantiaNevidimka.Text = $"{prod.name}\n {prod.price}";
+
+        //    prod = Core.Context.Product.Where(p => p.name == "учебник").FirstOrDefault();
+        //    Book.Text = $"{prod.name}\n {prod.price}";
+        //}
     }
 }

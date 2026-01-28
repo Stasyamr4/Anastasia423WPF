@@ -20,9 +20,10 @@ namespace Anastasia423WPF
             this.Product_Order = new HashSet<Product_Order>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
-        public decimal price { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string ImagePath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product_Order> Product_Order { get; set; }

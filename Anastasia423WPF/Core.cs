@@ -8,6 +8,6 @@ namespace Anastasia423WPF
 {
     internal class Core
     {
-        public static OnlainMagEntities Context = new OnlainMagEntities();
+        public static OnlainShopEntities Context = new OnlainShopEntities();
     }
 }

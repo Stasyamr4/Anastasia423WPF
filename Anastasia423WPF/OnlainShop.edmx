@@ -7,26 +7,30 @@
       <Schema Namespace="Хранилище OnlainMagModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Order">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dataOrd" Type="date" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataOrd" Type="date" Nullable="false" />
+          <Property Name="Fio" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Product_Order">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="productid" Type="int" Nullable="false" />
-          <Property Name="orderid" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -43,10 +47,10 @@
           <End Role="Product_Order" Type="Self.Product_Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Product_Order">
-              <PropertyRef Name="orderid" />
+              <PropertyRef Name="OrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -55,10 +59,10 @@
           <End Role="Product_Order" Type="Self.Product_Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Product_Order">
-              <PropertyRef Name="productid" />
+              <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -83,28 +87,32 @@
       <Schema Namespace="OnlainMagModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Order">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dataOrd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataOrd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product_Order" Relationship="Self.FK_Product_Order_Order" FromRole="Order" ToRole="Product_Order" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product_Order" Relationship="Self.FK_Product_Order_Product" FromRole="Product" ToRole="Product_Order" />
         </EntityType>
         <EntityType Name="Product_Order">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="productid" Type="Int32" Nullable="false" />
-          <Property Name="orderid" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Product_Order_Order" FromRole="Product_Order" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Order_Product" FromRole="Product_Order" ToRole="Product" />
         </EntityType>
@@ -123,10 +131,10 @@
           <End Role="Product_Order" Type="Self.Product_Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Product_Order">
-              <PropertyRef Name="orderid" />
+              <PropertyRef Name="OrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -135,14 +143,14 @@
           <End Role="Product_Order" Type="Self.Product_Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Product_Order">
-              <PropertyRef Name="productid" />
+              <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OnlainMagEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OnlainShopEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="Product" EntityType="Self.Product" />
           <EntitySet Name="Product_Order" EntityType="Self.Product_Order" />
@@ -161,30 +169,34 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище OnlainMagModelContainer" CdmEntityContainer="OnlainMagEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище OnlainMagModelContainer" CdmEntityContainer="OnlainShopEntities">
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="OnlainMagModel.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="dataOrd" ColumnName="dataOrd" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DataOrd" ColumnName="DataOrd" />
+                <ScalarProperty Name="Fio" ColumnName="Fio" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="OnlainMagModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product_Order">
             <EntityTypeMapping TypeName="OnlainMagModel.Product_Order">
               <MappingFragment StoreEntitySet="Product_Order">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="productid" ColumnName="productid" />
-                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

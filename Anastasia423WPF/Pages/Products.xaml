@@ -7,27 +7,47 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Products">
-    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <Grid Background="#FF672E2E">
-                    <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="HARRY POTTER" VerticalAlignment="Top" FontSize="33" Foreground="#FFD0ACAC"/>
-                    <Image Source="/Images/Шарф.jpg"  HorizontalAlignment="Left" Margin="28,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.493,0.186" Height="120" Width="150"/>
-                    <TextBlock x:Name="Sharf" HorizontalAlignment="Left" Margin="67,228,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.097,0.608" Foreground="#FFBDBDBD"/>
-                    <Image Source="/Images/PALOCIKA.jpg" HorizontalAlignment="Left" Margin="214,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.493,0.186" Height="126" Width="160"/>
-                    <TextBlock x:Name="Palochka" HorizontalAlignment="Left" Margin="261,221,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="16" Foreground="#FFD0ACAC"/>
-                    <Image Source="/Images/mantia.jpg" HorizontalAlignment="Left" Height="119" Margin="427,93,0,0" VerticalAlignment="Top" Width="117" RenderTransformOrigin="0.662,0.549"/>
-                    <TextBlock x:Name="MantiaNevidimka" HorizontalAlignment="Left" Margin="453,221,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="16" Foreground="#FFD0ACAC"/>
-                    <Image Source="/Images/UCEBNIC.jpg" HorizontalAlignment="Left" Height="118" Margin="596,93,0,0" VerticalAlignment="Top" Width="169"/>
-                    <TextBlock x:Name="Book" HorizontalAlignment="Left" Margin="644,221,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="16" Foreground="#FFD0ACAC"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="57,269,0,0" VerticalAlignment="Top" Height="25" Width="86" Background="#FF000275"/>
-                </Grid>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-        <ListBox.ItemsPanel>
-            <ItemsPanelTemplate>
-                <WrapPanel/>
-            </ItemsPanelTemplate>
-        </ListBox.ItemsPanel>
-    </ListBox>
+
+    <Grid>
+        <ListBox x:Name="listBox" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ItemsSource="{Binding Path=products}">
+                 
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="#FF672E2E" Margin="10" Width="250" Height="180">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        
+                        <Image Source="{Binding ImagePath}" 
+                               Grid.Row="0"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"
+                               Height="120" 
+                               Width="150"
+                               Margin="0,10"/>
+
+                        
+                        <TextBlock Text="{Binding Name}" 
+                                   Grid.Row="1"
+                                   HorizontalAlignment="Center" 
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center" 
+                                   FontSize="20" 
+                                   Foreground="#FFD0ACAC"
+                                   Margin="10"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+    </Grid>
 </Page>

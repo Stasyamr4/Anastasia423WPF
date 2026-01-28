@@ -64,25 +64,35 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core.cs" />
+    <Compile Include="OnlainShop.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OnlainShop.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OnlainShop.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OnlainShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OnlainShop.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OnlainShop.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>OnlainShop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Products.xaml.cs">
       <DependentUpon>Products.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OnlainMag.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OnlainMag.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Order.cs">
-      <DependentUpon>OnlainMag.tt</DependentUpon>
-    </Compile>
     <Compile Include="Product.cs">
-      <DependentUpon>OnlainMag.tt</DependentUpon>
+      <DependentUpon>OnlainShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Product_Order.cs">
-      <DependentUpon>OnlainMag.tt</DependentUpon>
+      <DependentUpon>OnlainShop.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>OnlainMag.tt</DependentUpon>
+      <DependentUpon>OnlainShop.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -102,16 +112,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OnlainMag.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OnlainMag.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OnlainMag.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OnlainMag.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -129,12 +129,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="OnlainMag.edmx">
+    <EntityDeploy Include="OnlainShop.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OnlainMag.Designer.cs</LastGenOutput>
+      <LastGenOutput>OnlainShop.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="OnlainMag.edmx.diagram">
-      <DependentUpon>OnlainMag.edmx</DependentUpon>
+    <None Include="OnlainShop.edmx.diagram">
+      <DependentUpon>OnlainShop.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -150,20 +150,21 @@
     <Resource Include="Images\mantia.jpg" />
     <Resource Include="Images\PALOCIKA.jpg" />
     <Resource Include="Images\Шарф.jpg" />
-    <Content Include="OnlainMag.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>OnlainMag.Context.cs</LastGenOutput>
-      <DependentUpon>OnlainMag.edmx</DependentUpon>
-    </Content>
-    <Content Include="OnlainMag.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OnlainMag.edmx</DependentUpon>
-      <LastGenOutput>OnlainMag.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="OnlainShop.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OnlainShop.edmx</DependentUpon>
+      <LastGenOutput>OnlainShop.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="OnlainShop.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OnlainShop.edmx</DependentUpon>
+      <LastGenOutput>OnlainShop.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,9 +14,9 @@ namespace Anastasia423WPF
     
     public partial class Product_Order
     {
-        public int id { get; set; }
-        public int productid { get; set; }
-        public int orderid { get; set; }
+        public int ID { get; set; }
+        public int ProductID { get; set; }
+        public int OrderID { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }

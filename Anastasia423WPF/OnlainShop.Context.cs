@@ -13,10 +13,10 @@ namespace Anastasia423WPF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OnlainMagEntities : DbContext
+    public partial class OnlainShopEntities : DbContext
     {
-        public OnlainMagEntities()
-            : base("name=OnlainMagEntities")
+        public OnlainShopEntities()
+            : base("name=OnlainShopEntities")
         {
         }
     
