@@ -25,7 +25,7 @@ namespace Anastasia423WPF.NewFolder1
         public List<Product> products = Core.Context.Product.ToList();
         private int? _currentOrderId = null;
 
-        public Products(int? orderId)
+        public Products()
         {
             InitializeComponent();
             LoadProducts();
@@ -116,23 +116,12 @@ namespace Anastasia423WPF.NewFolder1
 
         private void NextPage_Click(object sender, RoutedEventArgs e)
         {
-            // Проверяем, есть ли товары в корзине
-            if (_currentOrderId == null)
-            {
-                // Пытаемся получить ID заказа из сессии
-                if (Application.Current.Properties["CurrentOrderId"] != null)
-                {
-                    _currentOrderId = (int)Application.Current.Properties["CurrentOrderId"];
-                }
-            }
-
             if (_currentOrderId == null)
             {
                 MessageBox.Show("Добавьте товары в корзину!");
                 return;
             }
 
-            // Проверяем, есть ли товары в этом заказе
             var productCount = Core.Context.Product_Order
                 .Count(po => po.OrderID == _currentOrderId);
 
@@ -141,9 +130,9 @@ namespace Anastasia423WPF.NewFolder1
                 MessageBox.Show("Добавьте товары в корзину!");
                 return;
             }
-            
-            // Переход на страницу оформления заказа
-            NavigationService.Navigate(new Basket(_currentOrderId.Value));
+
+            // Переход на страницу корзины
+            NavigationService.Navigate(new Basket(_currentOrderId));
         }
     }
 }

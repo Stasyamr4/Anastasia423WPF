@@ -92,11 +92,6 @@ namespace Anastasia423WPF.Pages
             }
         }
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
-        {
-            // Возвращаемся на страницу товаров
-            NavigationService.Navigate(new Products(_orderId));
-        }
 
         private void BtnCheckout_Click(object sender, RoutedEventArgs e)
         {
