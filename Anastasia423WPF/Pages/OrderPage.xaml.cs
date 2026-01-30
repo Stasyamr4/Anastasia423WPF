@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Anastasia423WPF.Pages;
-namespace Anastasia423WPF
+
+namespace Anastasia423WPF.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для OrderPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OrderPage : Page
     {
-        public MainWindow()
+        public OrderPage(int value)
         {
             InitializeComponent();
-        }
-
-        private void PreviousPage_Click(object sender, RoutedEventArgs e)
-        {
-            Page currentPage = MainFrame.Content as Page;
-            if (MainFrame.NavigationService.CanGoBack) MainFrame.NavigationService.GoBack();
-            
         }
     }
 }

@@ -43,7 +43,12 @@
                        FontSize="14" 
                        Foreground="#FFE0C0C0"
                        Margin="0,5,0,0"/>
-                            <Button x:Name="ToBasket" Content="Добавить в корзину" Margin="10"></Button>
+                            <Button x:Name="ToBasket" 
+        Content="Добавить в корзину" 
+        Margin="10" 
+        Click="ToBasket_Click"
+        Tag="{Binding ID}">
+                            </Button>
                         </StackPanel>
 
                     </Grid>
