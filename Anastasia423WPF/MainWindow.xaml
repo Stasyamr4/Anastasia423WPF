@@ -8,5 +8,6 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Frame x:Name="MainFrame" Grid.Row="1" Source="Pages/Products.xaml" NavigationUIVisibility="Hidden"/>
+        <Button x:Name="PreviousPage" Width="100" Content="Назад" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30" Click="PreviousPage_Click"></Button>
     </Grid>
 </Window>

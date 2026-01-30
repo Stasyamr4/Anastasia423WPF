@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Anastasia423WPF.Pages;
+
 namespace Anastasia423WPF.NewFolder1
 {
     /// <summary>
@@ -74,5 +76,10 @@ namespace Anastasia423WPF.NewFolder1
         //    prod = Core.Context.Product.Where(p => p.name == "учебник").FirstOrDefault();
         //    Book.Text = $"{prod.name}\n {prod.price}";
         //}
+
+        private void NextPage_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Basket());
+        }
     }
 }

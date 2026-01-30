@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Anastasia423WPF.Pages;
-namespace Anastasia423WPF
+
+namespace Anastasia423WPF.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Basket.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Basket : Page
     {
-        public MainWindow()
+        public Basket()
         {
             InitializeComponent();
         }
-
-        
     }
 }
