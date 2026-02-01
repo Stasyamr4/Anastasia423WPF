@@ -29,6 +29,34 @@ namespace Anastasia423WPF.NewFolder1
         {
             InitializeComponent();
             LoadProducts();
+            RestoreCurrentOrder();
+        }
+
+        // Дополнительный конструктор с параметром (для передачи из других страниц)
+        public Products(int? orderId) : this() // Вызываем основной конструктор
+        {
+            _currentOrderId = orderId;
+        }
+
+        private void RestoreCurrentOrder()
+        {
+            // Ищем неоформленный заказ (с временными данными)
+            var tempOrder = Core.Context.Order
+                .Where(o => o.Fio == "Временный заказ" || o.Email == "temp@example.com")
+                .OrderByDescending(o => o.DataOrd)
+                .FirstOrDefault();
+
+            if (tempOrder != null)
+            {
+                // Проверяем, есть ли в нем товары
+                var hasItems = Core.Context.Product_Order
+                    .Any(po => po.OrderID == tempOrder.ID);
+
+                if (hasItems)
+                {
+                    _currentOrderId = tempOrder.ID;
+                }
+            }
         }
 
         private void LoadProducts()
@@ -40,16 +68,8 @@ namespace Anastasia423WPF.NewFolder1
 
         private void ToBasket_Click(object sender, RoutedEventArgs e)
         {
-            // Способ 1: Получаем товар из DataContext кнопки
             var button = sender as Button;
-            //var product = button?.DataContext as Product;
-
-            // Способ 2: Получаем из CommandParameter (если использовали CommandParameter="{Binding}")
-            // var product = button?.CommandParameter as Product;
-
-
-            var productId = (int?)button?.Tag;
-            var product = Core.Context.Product.FirstOrDefault(p => p.ID == productId);
+            var product = button?.DataContext as Product;
 
             if (product != null)
             {
@@ -61,13 +81,13 @@ namespace Anastasia423WPF.NewFolder1
         {
             try
             {
-                // Создаем новый заказ (корзину), если его еще нет
+                // Создаем новый заказ, если его еще нет
                 if (_currentOrderId == null)
                 {
                     var newOrder = new Order
                     {
                         DataOrd = DateTime.Now,
-                        Fio = "Временный заказ", // Можно оставить пустым или заполнить позже
+                        Fio = "Временный заказ",
                         Email = "temp@example.com",
                         Address = "Не указан"
                     };
@@ -76,9 +96,6 @@ namespace Anastasia423WPF.NewFolder1
                     Core.Context.SaveChanges();
 
                     _currentOrderId = newOrder.ID;
-
-                    // Сохраняем ID заказа в сессии
-                    Application.Current.Properties["CurrentOrderId"] = _currentOrderId;
                 }
 
                 // Проверяем, есть ли уже этот товар в заказе
@@ -101,7 +118,6 @@ namespace Anastasia423WPF.NewFolder1
                 Core.Context.Product_Order.Add(productOrder);
                 Core.Context.SaveChanges();
 
-                // Получаем название товара для сообщения
                 var product = Core.Context.Product.FirstOrDefault(p => p.ID == productId);
                 if (product != null)
                 {

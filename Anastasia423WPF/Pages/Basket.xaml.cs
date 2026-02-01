@@ -156,5 +156,10 @@ namespace Anastasia423WPF.Pages
             _orderId = orderId;
             LoadBasket();
         }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Products(_orderId));
+        }
     }
 }

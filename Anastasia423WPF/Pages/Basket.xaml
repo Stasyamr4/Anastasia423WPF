@@ -161,7 +161,7 @@
             <!-- Кнопка назад -->
             <Button x:Name="BtnBack" 
                     Grid.Column="0" 
-                    Content="← Вернуться к товарам" 
+                    Content="Вернуться к товарам" 
                     Margin="5,0" 
                     Padding="15"
                     Background="#FF672E2E" 
@@ -169,7 +169,7 @@
                     FontSize="16"
                     FontWeight="Bold"
                     BorderThickness="0"
-                    Height="50"
+                    Height="50" Click="BtnBack_Click"
                     >
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -185,7 +185,7 @@
             <!-- Кнопка оформить заказ -->
             <Button x:Name="BtnCheckout" 
                     Grid.Column="1" 
-                    Content="Оформить заказ →" 
+                    Content="Оформить заказ ->" 
                     Margin="5,0" 
                     Padding="15"
                     Background="#4CAF50" 

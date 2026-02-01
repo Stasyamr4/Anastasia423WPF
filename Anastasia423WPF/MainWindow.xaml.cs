@@ -25,11 +25,14 @@ namespace Anastasia423WPF
             InitializeComponent();
         }
 
-        private void PreviousPage_Click(object sender, RoutedEventArgs e)
-        {
-            Page currentPage = MainFrame.Content as Page;
-            if (MainFrame.NavigationService.CanGoBack) MainFrame.NavigationService.GoBack();
-            
-        }
+        //private void PreviousPage_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Page currentPage = MainFrame.Content as Page;
+        //    if (MainFrame.NavigationService.CanGoBack)
+        //    {
+                
+        //        MainFrame.NavigationService.GoBack();
+        //    }
+        //}
     }
 }
