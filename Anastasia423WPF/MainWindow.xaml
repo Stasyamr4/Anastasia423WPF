@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Anastasia423WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MAGICAL PRODUCTS SHOP" Height="450" Width="800">
     <Grid>
         <Frame x:Name="MainFrame" Grid.Row="1" Source="Pages/Products.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
