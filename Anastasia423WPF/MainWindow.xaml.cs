@@ -23,6 +23,8 @@ namespace Anastasia423WPF
         public MainWindow()
         {
             InitializeComponent();
+
+            MainFrame.Navigated += MainFrame_Navigated;
         }
 
         //private void PreviousPage_Click(object sender, RoutedEventArgs e)
@@ -30,9 +32,29 @@ namespace Anastasia423WPF
         //    Page currentPage = MainFrame.Content as Page;
         //    if (MainFrame.NavigationService.CanGoBack)
         //    {
-                
+
         //        MainFrame.NavigationService.GoBack();
         //    }
         //}
+
+
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            // Меняем заголовок в зависимости от страницы
+            if (e.Content is Page page)
+            {
+                string pageTitle = page.Title;
+                if (!string.IsNullOrEmpty(pageTitle))
+                {
+                    this.Title = $"{pageTitle} - Magical Products Shop";
+                }
+                else
+                {
+                    // Если у страницы нет Title, используем имя класса
+                    string pageName = page.GetType().Name;
+                    this.Title = $"{pageName} - Magical Products Shop";
+                }
+            }
+        }
     }
 }
