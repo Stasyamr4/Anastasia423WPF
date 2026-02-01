@@ -8,67 +8,91 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Products">
 
-    <Grid Background="#FFF5F5F5">
+    <Grid>
+        <!-- Простой заголовок -->
+        <TextBlock Text="Каталог товаров" 
+                   FontSize="26" 
+                   FontWeight="Bold" 
+                   Foreground="#FF2C3E50" 
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Center"
+                   Margin="0,25,0,0"/>
+
+        <!-- Список товаров -->
         <ListBox x:Name="listBox" 
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 Margin="25,70,25,70"
                  Background="Transparent"
                  BorderThickness="0"
-                 Margin="10">
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="#FF8B4513" 
+                    <!-- Карточка товара -->
+                    <Border BorderBrush="#E0E0E0" 
                             BorderThickness="1"
-                            CornerRadius="5"
+                            CornerRadius="6"
                             Background="White"
-                            Margin="10"
-                            Width="250"
-                            Height="280">
+                            Margin="12,8"
+                            Width="240"
+                            Height="290">
+
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="6" ShadowDepth="1" Color="#CCCCCC"/>
+                        </Border.Effect>
+
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="150"/>
+                                <RowDefinition Height="140"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <!-- Картинка товара -->
-                            <Image Source="{Binding ImagePath}" 
-                                   Grid.Row="0"
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   Width="180"
-                                   Height="120"/>
+                            <!-- Область картинки -->
+                            <Border Grid.Row="0" 
+                                    Background="#F8F8F8" 
+                                    CornerRadius="6,6,0,0">
+                                <Image Source="{Binding ImagePath}" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       Stretch="Uniform"
+                                       MaxWidth="180"
+                                       MaxHeight="110"/>
+                            </Border>
 
-                            <!-- Информация о товаре -->
+                            <!-- Информация -->
                             <StackPanel Grid.Row="1" 
-                                        HorizontalAlignment="Center" 
-                                        VerticalAlignment="Center"
-                                        Margin="10">
+                                        Margin="15,10">
                                 <TextBlock Text="{Binding Name}" 
                                            HorizontalAlignment="Center" 
                                            TextWrapping="Wrap"
+                                           FontSize="15" 
+                                           FontWeight="SemiBold"
+                                           Foreground="#333333"
+                                           TextAlignment="Center"/>
+
+                                <!-- Цена в рублях -->
+                                <TextBlock Text="{Binding Price, StringFormat='{}{0} ₽'}" 
+                                           HorizontalAlignment="Center"
                                            FontSize="16" 
                                            FontWeight="Bold"
-                                           Foreground="#FF8B4513"/>
-
-                                <TextBlock Text="{Binding Price, StringFormat='Цена: {0:C}'}" 
-                                           HorizontalAlignment="Center"
-                                           FontSize="14" 
-                                           Foreground="Black"
-                                           Margin="0,5,0,0"/>
+                                           Foreground="#E74C3C"
+                                           Margin="0,10,0,0"/>
                             </StackPanel>
 
-                            <!-- Кнопка добавить в корзину -->
+                            <!-- Кнопка в корзину -->
                             <Button Grid.Row="2"
-                                    x:Name="ToBasket" 
                                     Content="Добавить в корзину" 
                                     Margin="20,0,20,15"
-                                    Padding="8"
+                                    Padding="10,6"
                                     Click="ToBasket_Click"
                                     Tag="{Binding ID}"
-                                    Background="#FF8B4513"
+                                    Background="#3498DB"
                                     Foreground="White"
-                                    BorderThickness="0"/>
+                                    FontSize="14"
+                                    FontWeight="SemiBold"
+                                    BorderThickness="0"
+                                    Cursor="Hand">
+                            </Button>
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -81,19 +105,26 @@
             </ListBox.ItemsPanel>
         </ListBox>
 
-        <!-- Кнопка перехода к корзине -->
-        <Button x:Name="NextPage" 
-                Content="Перейти в корзину" 
+        <!-- Кнопка внизу -->
+        <Border Background="White" 
+                BorderBrush="#E0E0E0" 
+                BorderThickness="1,1,0,0"
                 VerticalAlignment="Bottom" 
-                HorizontalAlignment="Right" 
-                Margin="20"
-                Width="140" 
-                Height="40"
-                FontSize="14" 
-                Click="NextPage_Click"
-                Background="#FF8B4513"
-                Foreground="White"
-                BorderThickness="0"/>
-
+                HorizontalAlignment="Stretch"
+                Height="55">
+            <Button x:Name="NextPage" 
+                    Content="Перейти в корзину" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right" 
+                    Margin="25,0"
+                    Height="40"
+                    FontSize="14" 
+                    FontWeight="Bold"
+                    Click="NextPage_Click"
+                    Background="#2C3E50"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Width="150"/>
+        </Border>
     </Grid>
 </Page>
