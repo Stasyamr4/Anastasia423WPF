@@ -91,6 +91,15 @@
     <Compile Include="Pages\Products.xaml.cs">
       <DependentUpon>Products.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>OnlainShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Order.cs">
+      <DependentUpon>OnlainShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>OnlainShop.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -117,12 +126,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Product.cs">
-      <DependentUpon>OnlainShop.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Product_Order.cs">
-      <DependentUpon>OnlainShop.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

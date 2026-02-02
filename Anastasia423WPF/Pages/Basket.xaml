@@ -16,7 +16,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Заголовок -->
         <Border Grid.Row="0" Background="DarkSlateBlue" Padding="20">
             <TextBlock Text="Ваша корзина" 
                        Foreground="White" 
