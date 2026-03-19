@@ -21,7 +21,7 @@
                    VerticalAlignment="Top" FontSize="22"
                    FontFamily="Batang" FontWeight="Bold"/>
 
-        <ListBox Margin="80,70,80,10" Background="Transparent" BorderThickness="0">
+        <ListBox Width="600" Height="350" Margin="0,50,0,10" Background="Transparent" BorderThickness="0">
             
         </ListBox>
 
