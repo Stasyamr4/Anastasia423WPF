@@ -25,5 +25,7 @@ namespace Anastasia423WPF.Pages
             InitializeComponent();
             
         }
+
+        
     }
 }
