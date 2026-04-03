@@ -1,0 +1,24 @@
+﻿<Page x:Class="Anastasia423WPF.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Anastasia423WPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AuthPage">
+
+    <Grid>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FFF7E693" Offset="0"/>
+                <GradientStop Color="#CC7D1825" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Padding="20" FontSize="16" FontWeight="DemiBold">Войдите в аккаунт</TextBlock>
+            <TextBox x:Name="LoginText"  Width="140" Height="30" Background="#B2FFFFFF"></TextBox>
+            <PasswordBox x:Name="PassText" Width="140" Height="30" Background="#B2FFFFFF" Margin="0,20,0,0"></PasswordBox>
+        </StackPanel>
+    </Grid>
+</Page>
