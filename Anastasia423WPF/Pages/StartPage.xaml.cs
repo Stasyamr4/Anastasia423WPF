@@ -16,17 +16,16 @@ using System.Windows.Shapes;
 namespace Anastasia423WPF.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AuthPage.xaml
+    /// Логика взаимодействия для StartPage.xaml
     /// </summary>
-    public partial class AuthPage : Page
+    public partial class StartPage : Page
     {
-        public AuthPage()
+        public StartPage()
         {
             InitializeComponent();
-            
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Catalog());
         }

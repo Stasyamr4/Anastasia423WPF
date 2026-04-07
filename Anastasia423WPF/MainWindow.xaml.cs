@@ -26,9 +26,6 @@ namespace Anastasia423WPF
             InitializeComponent();
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            Content = new AuthPage();
-        }
+        
     }
 }
