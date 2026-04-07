@@ -30,5 +30,10 @@ namespace Anastasia423WPF.Pages
         {
             NavigationService.Navigate(new Catalog());
         }
+
+        private void Registr_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegistrationPage());
+        }
     }
 }

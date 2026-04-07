@@ -1,0 +1,33 @@
+﻿<Page x:Class="Anastasia423WPF.Pages.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Anastasia423WPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="RegistrationPage">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFCCCC83"/>
+                <GradientStop Color="#FF1B375D" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button x:Name="Back" Width="100" Height="35" FontSize="20" Background="#FF0F3E25" FontWeight="Thin" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30,0,0,30" Click="Back_Click">Назад</Button>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Padding="20" FontSize="36" FontWeight="Thin"  Foreground="White">Регистрация</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,15" FontSize="20" FontWeight="Thin"  Foreground="White" >Введите логин</TextBlock>
+            <TextBox x:Name="LoginText"  Width="210" Height="30" Background="#B2FFFFFF"></TextBox>
+            <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20" FontWeight="Thin"  Foreground="White">Введите пароль</TextBlock>
+            <PasswordBox x:Name="PassText" Width="210" Height="30" Background="#B2FFFFFF" Margin="0,15,0,0"></PasswordBox>
+            <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20" FontWeight="Thin"  Foreground="White">Подтвердите пароль</TextBlock>
+            <PasswordBox x:Name="PassVerificText" Width="210" Height="30" Background="#B2FFFFFF" Margin="0,15,0,0"></PasswordBox>
+            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,15" FontSize="20" FontWeight="Thin"  Foreground="White" >Введите ФИО</TextBlock>
+            <TextBox x:Name="FIOText"  Width="210" Height="30" Background="#B2FFFFFF"></TextBox>
+            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,15" FontSize="20" FontWeight="Thin"  Foreground="White" >Введите номер телефона</TextBlock>
+            <TextBox x:Name="PhoneText"  Width="210" Height="30" Background="#B2FFFFFF" LostFocus="PhoneText_LostFocus"></TextBox>
+        </StackPanel>
+    </Grid>
+</Page>
