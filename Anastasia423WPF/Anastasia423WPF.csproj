@@ -66,6 +66,7 @@
     <Compile Include="Apointment.cs">
       <DependentUpon>MG_Cosmetic.tt</DependentUpon>
     </Compile>
+    <Compile Include="Core.cs" />
     <Compile Include="Manufacturer.cs">
       <DependentUpon>MG_Cosmetic.tt</DependentUpon>
     </Compile>

@@ -20,9 +20,15 @@ namespace Anastasia423WPF.Pages
     /// </summary>
     public partial class Catalog : Page
     {
+        public User user { get; set; }
         public Catalog()
         {
             InitializeComponent();
+        }
+
+        public Catalog(User us): base()
+        {
+            user = us;
         }
 
         private void AuthUser_Click(object sender, RoutedEventArgs e)

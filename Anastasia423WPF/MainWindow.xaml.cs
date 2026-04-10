@@ -24,6 +24,8 @@ namespace Anastasia423WPF
         public MainWindow()
         {
             InitializeComponent();
+            this.Width = 900;
+            this.Height = 708;
         }
 
         
