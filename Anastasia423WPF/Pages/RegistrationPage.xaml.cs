@@ -33,7 +33,7 @@ namespace Anastasia423WPF.Pages
             NavigationService.Navigate(new AuthPage());
         }
 
-        private bool PasswordVer(string password, string password2)
+        public bool PasswordVer(string password, string password2)
         {
             if (password != null && password2 != null)
             {
@@ -73,7 +73,7 @@ namespace Anastasia423WPF.Pages
             var usInDB = Core.Context.User.Where(u => u.Login == login).FirstOrDefault();
             if (usInDB == null)
             {
-                if (CheckFields(login, FIOText.Text, PhoneText.Text) && (PasswordVer(PassText.Password, PassVerificText.Password)))
+                if (CheckFields(login, password, PassVerificText.Password, FIOText.Text, PhoneText.Text) && (PasswordVer(password, PassVerificText.Password)))
                 {
                     Core.Context.User.Add(us);
                     Core.Context.SaveChanges();
@@ -95,7 +95,7 @@ namespace Anastasia423WPF.Pages
             }
         }
 
-        private bool CheckFields(string login, string FIO, string phoneNum)
+        private bool CheckFields(string login, string password, string passwordConfirm, string FIO, string phoneNum)
         {
             while (true)
             {
@@ -103,6 +103,20 @@ namespace Anastasia423WPF.Pages
                 if (string.IsNullOrEmpty(login))
                 {
                     MessageBox.Show("Логин должен быть указан!", "Некорректный ввод", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+
+                // Проверка пароля
+                if (string.IsNullOrEmpty(password))
+                {
+                    MessageBox.Show("Пароль должен быть указан!", "Некорректный ввод", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+
+                // Проверка пароля подтвенржденного
+                if (string.IsNullOrEmpty(passwordConfirm))
+                {
+                    MessageBox.Show("Пароль должен быть указан!", "Некорректный ввод", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
 
