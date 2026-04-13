@@ -26,7 +26,7 @@ namespace Anastasia423WPF.Pages
             InitializeComponent();
         }
 
-        public Catalog(User us): base()
+        public Catalog(User us): this()
         {
             user = us;
         }

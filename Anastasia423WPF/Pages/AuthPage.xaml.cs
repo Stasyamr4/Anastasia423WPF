@@ -20,10 +20,20 @@ namespace Anastasia423WPF.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
+        public User user { get; set; }
         public AuthPage()
         {
             InitializeComponent();
-            
+        }
+
+        public AuthPage(User us) : this()
+        {
+            if (us != null)
+            {
+                user = us;
+                LoginText.Text += user.Login;
+                PassText.Password += user.Password;
+            }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -34,6 +44,50 @@ namespace Anastasia423WPF.Pages
         private void Registr_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new RegistrationPage());
+        }
+
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            if(AuthUser(LoginText.Text, PassText.Password))
+            {
+                MessageBox.Show("Успешный вход! Приятных покупок!", "Успешный вход", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new Catalog(user));
+            }
+            else
+            {
+                MessageBox.Show("Авторизация не удалась! Проверьте праваильность логина и пароя!", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public bool AuthUser(string login, string password)
+        {
+            var UsInDB = Core.Context.User.Where(u => u.Login == login).FirstOrDefault();
+            if (UsInDB != null)
+            {
+                if (!string.IsNullOrEmpty(password))
+                {
+                    if (password == UsInDB.Password)
+                    {
+                        user = UsInDB;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введен неверный пароль!", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Введен неверный пароль!", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ошибка! Пользователь не найден в базе данных!", "Не найден в базе данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
         }
     }
 }

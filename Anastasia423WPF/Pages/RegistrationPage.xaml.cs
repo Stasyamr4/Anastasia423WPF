@@ -33,98 +33,11 @@ namespace Anastasia423WPF.Pages
             NavigationService.Navigate(new AuthPage());
         }
 
-        
-
-        private void PhoneText_LostFocus(object sender, RoutedEventArgs e)
+        private bool PasswordVer(string password, string password2)
         {
-            if (!String.IsNullOrEmpty(PhoneText.Text))
+            if (password != null && password2 != null)
             {
-                if (PhoneText.Text.Contains("+"))
-                {
-                    if (PhoneText.Text.Length == 12)
-                    {
-                        us.Phone = PhoneText.Text;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ошибка! Введите корректный номер телефона!"); return;
-                    }
-                }
-                else if (!PhoneText.Text.Contains("+"))
-                {
-                    if (PhoneText.Text.Length == 11)
-                    {
-                        us.Phone = PhoneText.Text;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ошибка! Введите корректный номер телефона!"); return;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Ошибка! Введите корректный номер телефона!"); return;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Ошибка! Заполните поле!"); return;
-            }
-        }
-
-        private void LoginText_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(LoginText.Text))
-            {
-                us.Login = LoginText.Text;
-            }
-            else
-            {
-                MessageBox.Show("Ошибка! Заполните поле!", "ошибка логина", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-        }
-
-        private void PassText_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(PassText.Password))
-            {
-                PasswordVer(PassText.Password, PassVerificText.Password);
-            }
-            else
-            {
-                MessageBox.Show("Ошибка! Заполните поле!", "ошибка пароля", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-        }
-
-        private void PassVerificText_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(PassVerificText.Password))
-            {
-                PasswordVer(PassText.Password, PassVerificText.Password);
-            }
-            else
-            {
-                MessageBox.Show("Ошибка! Заполните поле!", "ошибка пароля", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-        }
-
-        private void FIOText_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(FIOText.Text))
-            {
-                us.FIO = FIOText.Text;
-            }
-            else
-            {
-                MessageBox.Show("Ошибка! Заполните поле!", "ошибка ФИО", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-        }
-
-        private bool PasswordVer (string password, string password2)
-        {
-            if(password != null && password2 != null) 
-            {
-                if(password == password2)
+                if (password == password2)
                 {
                     us.Password = password;
                     return true;
@@ -144,21 +57,89 @@ namespace Anastasia423WPF.Pages
 
         private void RegistrUser_Click(object sender, RoutedEventArgs e)
         {
-            var usInDB = Core.Context.User.Where(u => u.Login == us.Login).FirstOrDefault();
-            if (usInDB == null)
+            if (RegistrationUser(LoginText.Text, PassText.Password))
             {
-                Core.Context.User.Add(us);
-                Core.Context.SaveChanges();
+                MessageBox.Show("Успешная регистрация!");
                 NavigationService.Navigate(new Catalog(us));
             }
+            else
+            {
+                MessageBox.Show("Регистрация не удалась!", "Ошибка регистрации", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public bool RegistrationUser(string login, string password)
+        {
+            var usInDB = Core.Context.User.Where(u => u.Login == login).FirstOrDefault();
+            if (usInDB == null)
+            {
+                if (CheckFields(login, FIOText.Text, PhoneText.Text) && (PasswordVer(PassText.Password, PassVerificText.Password)))
+                {
+                    Core.Context.User.Add(us);
+                    Core.Context.SaveChanges();
+                    MessageBox.Show("Пользователь успешно зарегистрирован!", "Успешная регистрация");
+                    return true;
+                }
+
+                else return false;
+                }
             else
             {
                 var answ = MessageBox.Show("Ошибка! Пользователь уже зарегистрирован! Желаете войти?", "Повторная регистрация", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
                 if (answ == MessageBoxResult.Yes)
                 {
                     NavigationService.Navigate(new AuthPage(us));
+                    return true;
                 }
-                else return;
+                else return false;
+            }
+        }
+
+        private bool CheckFields(string login, string FIO, string phoneNum)
+        {
+            while (true)
+            {
+                // Проверка login
+                if (string.IsNullOrEmpty(login))
+                {
+                    MessageBox.Show("Логин должен быть указан!", "Некорректный ввод", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+
+                // Проверка ФИО
+                if (string.IsNullOrEmpty(FIO))
+                {
+                    MessageBox.Show("Поле ФИО должно быть заполнено!", "Некорректный ввод", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+
+                // Проверка телефона
+                if (string.IsNullOrEmpty(phoneNum))
+                {
+                    MessageBox.Show("Номер телефона не может быть пустым!", "Некорректный ввод",
+                                    MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+
+                // Нормализация номера (если есть +, то должно быть 12 символов, иначе 11)
+                string cleanPhone = phoneNum.Trim();
+                bool isPhoneValid = (cleanPhone.StartsWith("+") && cleanPhone.Length == 12) ||
+                                    (!cleanPhone.StartsWith("+") && cleanPhone.Length == 11);
+
+                if (!isPhoneValid)
+                {
+                    MessageBox.Show("Номер телефона должен содержать 11 цифр или 12 с '+' в начале!", "Некорректный ввод",
+                                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+
+                // Все проверки пройдены – сохраняем данные в объект пользователя
+
+                us.Login = login;
+                us.FIO = FIO;
+                us.Phone = phoneNum;
+
+                return true;
             }
         }
     }
