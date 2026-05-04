@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f323714d753485f8561226a1a93c3a7" Name="Diagram1">
+        <EntityTypeShape EntityType="MG_KISHModel.book" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.BookGanre" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.ganre" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.readList" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.readStatus" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.report" Width="1.5" PointX="10.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.requestRole" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.requestUnFreeze" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.review" Width="1.5" PointX="10.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.role" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.sysdiagrams" Width="1.5" PointX="1.625" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MG_KISHModel.user_" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="MG_KISHModel.FK__book__AuthorID__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__readList__BookID__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__report__BookID__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__review__BookID__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK_BookGanre_book" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK_BookGanre_ganre" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__readList__ReadSt__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__readList__UserID__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__report__reviewID__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__report__userID__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__requestRo__userI__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__requestUn__userI__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__review__UserID__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="MG_KISHModel.FK__user___RoleID__4E88ABD4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

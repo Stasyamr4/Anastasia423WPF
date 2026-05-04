@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Anastasia423WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="AnastasiaUP" Height="450" Width="800">
     <Grid>
-        
+        <Frame Source="Pages/AuthPage.xaml" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

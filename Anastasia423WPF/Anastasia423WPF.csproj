@@ -35,8 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\Anastasia423WPF\Anastasia423WPF\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\Anastasia423WPF\Anastasia423WPF\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +63,48 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="book.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookGanre.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Core.cs" />
+    <Compile Include="ganre.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MG_KISH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="readList.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="readStatus.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="report.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="requestRole.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="requestUnFreeze.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="review.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="role.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_.cs">
+      <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,8 +117,32 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MG_KISH.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MG_KISH.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MG_KISH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MG_KISH.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AuthPage.xaml.cs">
+      <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +160,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="MG_KISH.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MG_KISH.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MG_KISH.edmx.diagram">
+      <DependentUpon>MG_KISH.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +175,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MG_KISH.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MG_KISH.Context.cs</LastGenOutput>
+      <DependentUpon>MG_KISH.edmx</DependentUpon>
+    </Content>
+    <Content Include="MG_KISH.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MG_KISH.edmx</DependentUpon>
+      <LastGenOutput>MG_KISH.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
