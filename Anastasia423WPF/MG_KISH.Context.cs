@@ -35,7 +35,6 @@ namespace Anastasia423WPF
         public virtual DbSet<requestUnFreeze> requestUnFreeze { get; set; }
         public virtual DbSet<review> review { get; set; }
         public virtual DbSet<role> role { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<user_> user_ { get; set; }
     }
 }

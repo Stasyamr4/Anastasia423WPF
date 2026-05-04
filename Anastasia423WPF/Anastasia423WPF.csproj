@@ -99,9 +99,6 @@
     <Compile Include="role.cs">
       <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>MG_KISH.tt</DependentUpon>
-    </Compile>
     <Compile Include="user_.cs">
       <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
@@ -177,19 +174,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="MG_KISH.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MG_KISH.Context.cs</LastGenOutput>
       <DependentUpon>MG_KISH.edmx</DependentUpon>
+      <LastGenOutput>MG_KISH.Context.cs</LastGenOutput>
     </Content>
     <Content Include="MG_KISH.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MG_KISH.edmx</DependentUpon>
       <LastGenOutput>MG_KISH.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

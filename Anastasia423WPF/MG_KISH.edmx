@@ -16,6 +16,8 @@
           <Property Name="BookPath" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="AuthorID" Type="int" Nullable="false" />
           <Property Name="IsFreeze" Type="bit" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="Rating" Type="float" />
         </EntityType>
         <EntityType Name="BookGanre">
           <Key>
@@ -96,16 +98,6 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="user$">
           <Key>
@@ -239,7 +231,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__review__UserID__6B24EA82">
+        <Association Name="FK__review__UserID__7B5B524B">
           <End Role="user$" Type="Self.user$" Multiplicity="1" />
           <End Role="review" Type="Self.review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -263,30 +255,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BookGanre_book">
-          <End Role="book" Type="Self.book" Multiplicity="1" />
-          <End Role="BookGanre" Type="Self.BookGanre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="book">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BookGanre">
-              <PropertyRef Name="BookID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BookGanre_ganre">
-          <End Role="ganre" Type="Self.ganre" Multiplicity="1" />
-          <End Role="BookGanre" Type="Self.BookGanre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ganre">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BookGanre">
-              <PropertyRef Name="GanreID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище MG_KISHModelContainer">
           <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BookGanre" EntityType="Self.BookGanre" Schema="dbo" store:Type="Tables" />
@@ -298,7 +266,6 @@
           <EntitySet Name="requestUnFreeze" EntityType="Self.requestUnFreeze" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="review" EntityType="Self.review" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user$" EntityType="Self.user$" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__book__AuthorID__6754599E" Association="Self.FK__book__AuthorID__6754599E">
             <End Role="user$" EntitySet="user$" />
@@ -340,21 +307,13 @@
             <End Role="book" EntitySet="book" />
             <End Role="review" EntitySet="review" />
           </AssociationSet>
-          <AssociationSet Name="FK__review__UserID__6B24EA82" Association="Self.FK__review__UserID__6B24EA82">
+          <AssociationSet Name="FK__review__UserID__7B5B524B" Association="Self.FK__review__UserID__7B5B524B">
             <End Role="user$" EntitySet="user$" />
             <End Role="review" EntitySet="review" />
           </AssociationSet>
           <AssociationSet Name="FK__user$__RoleID__4E88ABD4" Association="Self.FK__user$__RoleID__4E88ABD4">
             <End Role="role" EntitySet="role" />
             <End Role="user$" EntitySet="user$" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BookGanre_book" Association="Self.FK_BookGanre_book">
-            <End Role="book" EntitySet="book" />
-            <End Role="BookGanre" EntitySet="BookGanre" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BookGanre_ganre" Association="Self.FK_BookGanre_ganre">
-            <End Role="ganre" EntitySet="ganre" />
-            <End Role="BookGanre" EntitySet="BookGanre" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -373,11 +332,12 @@
           <Property Name="BookPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AuthorID" Type="Int32" Nullable="false" />
           <Property Name="IsFreeze" Type="Boolean" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Double" />
           <NavigationProperty Name="user_" Relationship="Self.FK__book__AuthorID__6754599E" FromRole="book" ToRole="user_" />
           <NavigationProperty Name="readList" Relationship="Self.FK__readList__BookID__778AC167" FromRole="book" ToRole="readList" />
           <NavigationProperty Name="report" Relationship="Self.FK__report__BookID__7D439ABD" FromRole="book" ToRole="report" />
           <NavigationProperty Name="review" Relationship="Self.FK__review__BookID__6C190EBB" FromRole="book" ToRole="review" />
-          <NavigationProperty Name="BookGanre" Relationship="Self.FK_BookGanre_book" FromRole="book" ToRole="BookGanre" />
         </EntityType>
         <EntityType Name="BookGanre">
           <Key>
@@ -387,8 +347,6 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BookID" Type="Int32" Nullable="false" />
           <Property Name="GanreID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="book" Relationship="Self.FK_BookGanre_book" FromRole="BookGanre" ToRole="book" />
-          <NavigationProperty Name="ganre" Relationship="Self.FK_BookGanre_ganre" FromRole="BookGanre" ToRole="ganre" />
         </EntityType>
         <EntityType Name="ganre">
           <Key>
@@ -397,7 +355,6 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="BookGanre" Relationship="Self.FK_BookGanre_ganre" FromRole="ganre" ToRole="BookGanre" />
         </EntityType>
         <EntityType Name="readList">
           <Key>
@@ -465,7 +422,7 @@
           <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="book" Relationship="Self.FK__review__BookID__6C190EBB" FromRole="review" ToRole="book" />
           <NavigationProperty Name="report" Relationship="Self.FK__report__reviewID__7E37BEF6" FromRole="review" ToRole="report" />
-          <NavigationProperty Name="user_" Relationship="Self.FK__review__UserID__6B24EA82" FromRole="review" ToRole="user_" />
+          <NavigationProperty Name="user_" Relationship="Self.FK__review__UserID__7B5B524B" FromRole="review" ToRole="user_" />
         </EntityType>
         <EntityType Name="role">
           <Key>
@@ -474,16 +431,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="user_" Relationship="Self.FK__user___RoleID__4E88ABD4" FromRole="role" ToRole="user_" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="user_">
           <Key>
@@ -501,7 +448,7 @@
           <NavigationProperty Name="report" Relationship="Self.FK__report__userID__7C4F7684" FromRole="user_" ToRole="report" />
           <NavigationProperty Name="requestRole" Relationship="Self.FK__requestRo__userI__01142BA1" FromRole="user_" ToRole="requestRole" />
           <NavigationProperty Name="requestUnFreeze" Relationship="Self.FK__requestUn__userI__03F0984C" FromRole="user_" ToRole="requestUnFreeze" />
-          <NavigationProperty Name="review" Relationship="Self.FK__review__UserID__6B24EA82" FromRole="user_" ToRole="review" />
+          <NavigationProperty Name="review" Relationship="Self.FK__review__UserID__7B5B524B" FromRole="user_" ToRole="review" />
           <NavigationProperty Name="role" Relationship="Self.FK__user___RoleID__4E88ABD4" FromRole="user_" ToRole="role" />
         </EntityType>
         <Association Name="FK__book__AuthorID__6754599E">
@@ -549,30 +496,6 @@
             </Principal>
             <Dependent Role="review">
               <PropertyRef Name="BookID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BookGanre_book">
-          <End Role="book" Type="Self.book" Multiplicity="1" />
-          <End Role="BookGanre" Type="Self.BookGanre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="book">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BookGanre">
-              <PropertyRef Name="BookID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BookGanre_ganre">
-          <End Role="ganre" Type="Self.ganre" Multiplicity="1" />
-          <End Role="BookGanre" Type="Self.BookGanre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ganre">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BookGanre">
-              <PropertyRef Name="GanreID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -648,7 +571,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__review__UserID__6B24EA82">
+        <Association Name="FK__review__UserID__7B5B524B">
           <End Role="user_" Type="Self.user_" Multiplicity="1" />
           <End Role="review" Type="Self.review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -683,7 +606,6 @@
           <EntitySet Name="requestUnFreeze" EntityType="Self.requestUnFreeze" />
           <EntitySet Name="review" EntityType="Self.review" />
           <EntitySet Name="role" EntityType="Self.role" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="user_" EntityType="Self.user_" />
           <AssociationSet Name="FK__book__AuthorID__6754599E" Association="Self.FK__book__AuthorID__6754599E">
             <End Role="user_" EntitySet="user_" />
@@ -700,14 +622,6 @@
           <AssociationSet Name="FK__review__BookID__6C190EBB" Association="Self.FK__review__BookID__6C190EBB">
             <End Role="book" EntitySet="book" />
             <End Role="review" EntitySet="review" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BookGanre_book" Association="Self.FK_BookGanre_book">
-            <End Role="book" EntitySet="book" />
-            <End Role="BookGanre" EntitySet="BookGanre" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BookGanre_ganre" Association="Self.FK_BookGanre_ganre">
-            <End Role="ganre" EntitySet="ganre" />
-            <End Role="BookGanre" EntitySet="BookGanre" />
           </AssociationSet>
           <AssociationSet Name="FK__readList__ReadSt__787EE5A0" Association="Self.FK__readList__ReadSt__787EE5A0">
             <End Role="readStatus" EntitySet="readStatus" />
@@ -733,7 +647,7 @@
             <End Role="user_" EntitySet="user_" />
             <End Role="requestUnFreeze" EntitySet="requestUnFreeze" />
           </AssociationSet>
-          <AssociationSet Name="FK__review__UserID__6B24EA82" Association="Self.FK__review__UserID__6B24EA82">
+          <AssociationSet Name="FK__review__UserID__7B5B524B" Association="Self.FK__review__UserID__7B5B524B">
             <End Role="user_" EntitySet="user_" />
             <End Role="review" EntitySet="review" />
           </AssociationSet>
@@ -758,6 +672,8 @@
                 <ScalarProperty Name="BookPath" ColumnName="BookPath" />
                 <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
                 <ScalarProperty Name="IsFreeze" ColumnName="IsFreeze" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -845,17 +761,6 @@
               <MappingFragment StoreEntitySet="role">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="MG_KISHModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
