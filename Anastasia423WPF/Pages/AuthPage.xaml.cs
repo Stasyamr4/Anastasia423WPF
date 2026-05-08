@@ -54,7 +54,7 @@ namespace Anastasia423WPF.Pages
                 MessageBox.Show("Успешный вход!", "Успешный вход", MessageBoxButton.OK, MessageBoxImage.Information);
                 if (user.RoleID == 1) // Пользователь
                 {
-                    //NavigationService.Navigate(new CatalogPage(user));
+                    NavigationService.Navigate(new CatalogPage(user));
                 }
                 else if (user.RoleID == 2) // Автор
                 {

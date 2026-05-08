@@ -20,7 +20,7 @@ namespace Anastasia423WPF.Pages
     /// </summary>
     public partial class RegistrationPage : Page
     {
-        private user_ us = new user_();
+        public user_ us { get; set; }
 
         public RegistrationPage()
         {
@@ -168,8 +168,7 @@ namespace Anastasia423WPF.Pages
                     Core.Context.SaveChanges();
 
                     MessageBox.Show("Вы успешно зарегистрированы!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                    //
-                    //NavigationService.Navigate(new Catalog(us));
+                    NavigationService.Navigate(new CatalogPage(us));
                 }
                 catch (System.Exception ex)
                 {
