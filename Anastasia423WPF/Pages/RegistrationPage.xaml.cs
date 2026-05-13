@@ -20,7 +20,7 @@ namespace Anastasia423WPF.Pages
     /// </summary>
     public partial class RegistrationPage : Page
     {
-        public user_ us { get; set; }
+        public user_ us = new user_();
 
         public RegistrationPage()
         {

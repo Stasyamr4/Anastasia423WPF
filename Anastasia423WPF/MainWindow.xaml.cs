@@ -1,28 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Anastasia423WPF.Pages;
 
 namespace Anastasia423WPF
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private user_ currentUser;
+
+        public MainWindow(user_ user)
         {
             InitializeComponent();
+            currentUser = user;
+
+            // Настройка видимости пунктов меню по роли
+            if (currentUser.RoleID == 3) // Admin
+                BtnAdmin.Visibility = Visibility.Visible;
+
+            if (currentUser.RoleID == 2) // Author
+                BtnAuthor.Visibility = Visibility.Visible;
+
+            if (currentUser.IsFreeze == true)
+                BtnFreezeWarning.Visibility = Visibility.Visible;
+
+            // По умолчанию – каталог
+            MainFrame.Navigate(new CatalogPage(currentUser));
         }
+
+        private void NavigateTo(Page page)
+        {
+            MainFrame.Navigate(page);
+        }
+
+        private void BtnCatalog_Click(object sender, RoutedEventArgs e) => NavigateTo(new CatalogPage(currentUser));
+        private void BtnLists_Click(object sender, RoutedEventArgs e) => NavigateTo(new UserListsPage(currentUser));
+        private void BtnAdmin_Click(object sender, RoutedEventArgs e) => NavigateTo(new AdminPage(currentUser));
+        private void BtnAuthor_Click(object sender, RoutedEventArgs e) => NavigateTo(new AuthorPage(currentUser));
+        private void BtnFreezeWarning_Click(object sender, RoutedEventArgs e) => NavigateTo(new ProfilePage(currentUser, true));
+        private void BtnProfile_Click(object sender, RoutedEventArgs e) => NavigateTo(new ProfilePage(currentUser));
     }
 }
