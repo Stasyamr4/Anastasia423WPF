@@ -17,5 +17,8 @@ namespace Anastasia423WPF
         public int ID { get; set; }
         public int BookID { get; set; }
         public int GanreID { get; set; }
+    
+        public virtual book book { get; set; }
+        public virtual ganre ganre { get; set; }
     }
 }

@@ -73,10 +73,20 @@
     <Compile Include="ganre.cs">
       <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
+    <Compile Include="MG_KISH.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MG_KISH.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="MG_KISH.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MG_KISH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MG_KISH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MG_KISH.edmx</DependentUpon>
     </Compile>
     <Compile Include="Pages\CatalogPage.xaml.cs">
       <DependentUpon>CatalogPage.xaml</DependentUpon>
@@ -131,16 +141,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MG_KISH.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MG_KISH.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MG_KISH.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MG_KISH.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>

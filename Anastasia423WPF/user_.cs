@@ -20,6 +20,7 @@ namespace Anastasia423WPF
             this.book = new HashSet<book>();
             this.readList = new HashSet<readList>();
             this.report = new HashSet<report>();
+            this.report1 = new HashSet<report>();
             this.requestRole = new HashSet<requestRole>();
             this.requestUnFreeze = new HashSet<requestUnFreeze>();
             this.review = new HashSet<review>();
@@ -39,6 +40,8 @@ namespace Anastasia423WPF
         public virtual ICollection<readList> readList { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<report> report { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<report> report1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<requestRole> requestRole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

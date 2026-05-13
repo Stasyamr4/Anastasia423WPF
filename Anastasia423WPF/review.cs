@@ -25,6 +25,8 @@ namespace Anastasia423WPF
         public int BookID { get; set; }
         public int Mark { get; set; }
         public string Description { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<bool> IsFreeze { get; set; }
     
         public virtual book book { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

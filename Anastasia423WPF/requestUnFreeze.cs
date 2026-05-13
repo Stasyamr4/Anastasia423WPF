@@ -18,7 +18,9 @@ namespace Anastasia423WPF
         public int userID { get; set; }
         public string requestText { get; set; }
         public System.DateTime reportDate { get; set; }
+        public Nullable<int> bookID { get; set; }
     
+        public virtual book book { get; set; }
         public virtual user_ user_ { get; set; }
     }
 }
