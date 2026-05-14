@@ -1,0 +1,73 @@
+﻿<Page x:Class="Anastasia423WPF.Pages.ListBookPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Списки чтения" Loaded="Page_Loaded" Background="#F5EFE6">
+    <Grid Margin="20,15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Мои списки" FontSize="26" FontFamily="Georgia" Foreground="#3D2B1F" Margin="0,0,0,6"/>
+        <Rectangle Grid.Row="1" Height="2" Fill="#C8A882" Margin="0,0,0,18" HorizontalAlignment="Left" Width="100"/>
+        <ListBox x:Name="LBoxStatuses" Grid.Row="2" Margin="0,0,0,18" Background="Transparent" BorderThickness="0" SelectionChanged="LBoxStatuses_SelectionChanged">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="White" CornerRadius="20" Margin="0,0,10,0" Padding="16,8" BorderBrush="#C8A882" BorderThickness="1" Cursor="Hand">
+                        <TextBlock Text="{Binding Name}" Foreground="#5C3D2E" FontSize="13" FontWeight="SemiBold"/>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="LBoxFilteredBooks" Grid.Row="3" Background="Transparent" BorderThickness="0" MouseDoubleClick="LBoxFilteredBooks_MouseDoubleClick">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="White" CornerRadius="8" Margin="0,0,0,8" Padding="14,10" BorderBrush="#E0D0BC" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <Border CornerRadius="4" ClipToBounds="True" Width="44" Height="62">
+                                <Image Source="{Binding book.Picture}" Stretch="UniformToFill"/>
+                            </Border>
+                            <StackPanel Margin="14,0,0,0" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding book.Name}" Foreground="#3D2B1F" FontWeight="SemiBold" FontSize="14"/>
+                                <TextBlock Text="{Binding readStatus.Name}" Foreground="#B07030" FontSize="12" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>

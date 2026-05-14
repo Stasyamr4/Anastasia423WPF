@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Anastasia423WPF
 {
-    internal class Core
+    public partial class ganre
     {
-        public static MG_KISHEntities1 Context = new MG_KISHEntities1();
-
-        public static user_ CurrentUser { get; set; }
+        public bool IsSelected { get; set; }
     }
+
 }

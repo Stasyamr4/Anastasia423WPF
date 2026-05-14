@@ -1,0 +1,45 @@
+﻿<Window x:Class="Anastasia423WPF.Windows.AppealFreezeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Апелляция" Height="440" Width="440"
+        WindowStartupLocation="CenterScreen" Background="#F5EFE6">
+
+    <Grid Margin="30,26">
+        <StackPanel>
+            <Border x:Name="TitleAccount" Background="#FDECEA" CornerRadius="8" Padding="16,12" Margin="0,0,0,12" Visibility="{Binding AccountTitleVisibility}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="🔒" FontSize="20" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Ваш аккаунт заморожен" FontSize="16" FontWeight="SemiBold" Foreground="#C0392B" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="TitleBook" Background="#FFF8E1" CornerRadius="8" Padding="16,12" Margin="0,0,0,12" Visibility="{Binding BookTitleVisibility}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="⚠️" FontSize="20" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Ваше произведение заморожено" FontSize="16" FontWeight="SemiBold" Foreground="#B07800" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+            <TextBlock Text="Причина" Foreground="#5C3D2E" FontSize="13" FontWeight="SemiBold" Margin="0,10,0,6"/>
+            <Border Background="White" CornerRadius="6" Padding="14,10" BorderBrush="#E0D0BC" BorderThickness="1" Margin="0,0,0,18">
+                <TextBlock x:Name="TBlockReason" Foreground="#4A3828" TextWrapping="Wrap" FontSize="13"/>
+            </Border>
+            <TextBlock Text="Текст апелляции" Foreground="#5C3D2E" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <Border BorderBrush="#C8A882" BorderThickness="1" CornerRadius="6" Background="White" Margin="0,0,0,22">
+                <TextBox x:Name="TBoxAppeal" Height="100" BorderThickness="0" Background="Transparent" TextWrapping="Wrap" AcceptsReturn="True" Padding="10,8" FontSize="13" Foreground="#3D2B1F" VerticalContentAlignment="Top"/>
+            </Border>
+            <Button Content="Отправить апелляцию" Height="42" Click="BtnSend_Click" Foreground="White" BorderThickness="0" FontSize="14" FontWeight="SemiBold" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="#5C3D2E" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#3D2B1F"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

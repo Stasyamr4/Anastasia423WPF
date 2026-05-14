@@ -6,37 +6,64 @@ namespace Anastasia423WPF
 {
     public partial class MainWindow : Window
     {
-        private user_ currentUser;
+        public user_ CurrentUser { get; set; }
 
         public MainWindow(user_ user)
         {
             InitializeComponent();
-            currentUser = user;
-
-            // Настройка видимости пунктов меню по роли
-            if (currentUser.RoleID == 3) // Admin
+            CurrentUser = user;
+            SetupSidebar();
+            if (user.RoleID == 3)
+            {
                 BtnAdmin.Visibility = Visibility.Visible;
-
-            if (currentUser.RoleID == 2) // Author
+            }
+            else if (user.RoleID == 2)
+            {
                 BtnAuthor.Visibility = Visibility.Visible;
-
-            if (currentUser.IsFreeze == true)
-                BtnFreezeWarning.Visibility = Visibility.Visible;
-
-            // По умолчанию – каталог
-            MainFrame.Navigate(new CatalogPage(currentUser));
+            }
+            else
+            {
+                BtnAdmin.Visibility = Visibility.Collapsed;
+                BtnAuthor.Visibility = Visibility.Collapsed;
+            }
+            MainFrame.Navigate(new CatalogPage(CurrentUser));
         }
-
-        private void NavigateTo(Page page)
+        private void SetupSidebar()
         {
-            MainFrame.Navigate(page);
+            if (CurrentUser == null) return;
+            if (CurrentUser.RoleID == 2)
+            {
+                BtnAuthor.Visibility = Visibility.Visible;
+            }
+            else if (CurrentUser.RoleID == 3)
+            {
+                BtnAdmin.Visibility = Visibility.Visible;
+            }
         }
 
-        private void BtnCatalog_Click(object sender, RoutedEventArgs e) => NavigateTo(new CatalogPage(currentUser));
-        private void BtnLists_Click(object sender, RoutedEventArgs e) => NavigateTo(new UserListsPage(currentUser));
-        private void BtnAdmin_Click(object sender, RoutedEventArgs e) => NavigateTo(new AdminPage(currentUser));
-        private void BtnAuthor_Click(object sender, RoutedEventArgs e) => NavigateTo(new AuthorPage(currentUser));
-        private void BtnFreezeWarning_Click(object sender, RoutedEventArgs e) => NavigateTo(new ProfilePage(currentUser, true));
-        private void BtnProfile_Click(object sender, RoutedEventArgs e) => NavigateTo(new ProfilePage(currentUser));
+        private void BtnCatalog_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new CatalogPage(CurrentUser));
+        }
+
+        private void BtnLists_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ListBookPage(CurrentUser));
+        }
+
+        private void BtnAuthor_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AuthorPage(CurrentUser));
+        }
+
+        private void BtnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AdminPage(CurrentUser));
+        }
+
+        private void BtnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ProfilePage(CurrentUser));
+        }
     }
 }
