@@ -8,7 +8,7 @@ namespace Anastasia423WPF
 {
     internal class Core
     {
-        public static MG_KISHEntities1 Context = new MG_KISHEntities1();
+        public static MG_KISHEntities Context = new MG_KISHEntities();
 
         public static user_ CurrentUser { get; set; }
     }

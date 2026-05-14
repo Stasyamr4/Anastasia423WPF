@@ -64,14 +64,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="book.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="BookGanre.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="Core.cs" />
     <Compile Include="ganre.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="MG_KISH.Context.cs">
       <AutoGen>True</AutoGen>
@@ -87,21 +87,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MG_KISH.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Pages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
@@ -130,31 +115,28 @@
     <Compile Include="Partial\Review.cs" />
     <Compile Include="Partial\User.cs" />
     <Compile Include="readList.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="readStatus.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="report.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="requestRole.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="requestUnFreeze.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="review.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="role.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="user_.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MG_KISH.tt</DependentUpon>
     </Compile>
     <Compile Include="Windows\AppealFreezeWindow.xaml.cs">
       <DependentUpon>AppealFreezeWindow.xaml</DependentUpon>
@@ -264,13 +246,6 @@
     <None Include="MG_KISH.edmx.diagram">
       <DependentUpon>MG_KISH.edmx</DependentUpon>
     </None>
-    <EntityDeploy Include="Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -294,17 +269,6 @@
       <DependentUpon>MG_KISH.edmx</DependentUpon>
       <LastGenOutput>MG_KISH.cs</LastGenOutput>
     </Content>
-    <Content Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
