@@ -72,8 +72,7 @@ namespace Anastasia423WPF.Pages
             var combo = sender as ComboBox;
             combo.ItemsSource = Core.Context.readStatus.ToList();
             int bookId = (int)combo.Tag;
-            var currentStatus = Core.Context.readList
-                .FirstOrDefault(r => r.BookID == bookId && r.UserID == _currentUser.ID);
+            var currentStatus = Core.Context.readList.FirstOrDefault(r => r.BookID == bookId && r.UserID == _currentUser.ID);
             if (currentStatus != null)
                 combo.SelectedValue = currentStatus.ReadStatusID;
         }
